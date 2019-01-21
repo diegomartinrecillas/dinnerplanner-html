@@ -1,0 +1,43 @@
+.dp-btn--primary {
+	background-color: darkorange;
+}
+
+.dp-container {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.dp-content {
+	display: flex;
+	flex: auto;
+}
+
+.dp-header {
+	align-items: center;
+	background: lightgray;
+	display: flex;
+	flex: none;
+	height: 6em;
+	justify-content: center;
+}
+
+.dp-header .dp-header__title {
+	margin: 0;
+	font-size: 2.5rem;
+}
+
+.dp-home {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	margin: 0 auto;
+	max-width: 1024px;
+}
+
+.dp-home .dp-home__body {
+	margin: 0 50px;
+	max-width: 500px;
+	text-align: center;
+}
