@@ -1,0 +1,14 @@
+.dp-home {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	margin: 0 auto;
+	max-width: 1024px;
+}
+
+.dp-home .dp-home__body {
+	margin: 0 50px;
+	max-width: 500px;
+	text-align: center;
+}
