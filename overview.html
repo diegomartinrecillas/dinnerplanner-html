@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Dinner Planner</title>
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<!-- Styles -->
+	<link rel="stylesheet" href="./styles/commons.css" />
+	<link rel="stylesheet" href="./styles/overview.css" />
+
+</head>
+
+<body class="dp-body">
+	<div id="container" class="dp-container">
+		<div class="dp-header">
+			<h1 class="dp-header__title">Dinner Planner</h1>
+		</div>
+
+		<div class="dp-content">
+			<div class="dp-overview">
+				<div class="dp-overview__top-bar">
+					<h3 class="dp-overview__guests" id="numberOfGuests"></h3>
+					<div class="dp-lg-only">
+						<button class="btn dp-btn--primary dp-overview__back-btn">Go back and edit dinner</button>
+					</div>
+					<div class="dp-sm-only">
+						<button class="btn dp-btn--primary dp-overview__back-btn">Back</button>
+					</div>
+				</div>
+				<div class="dp-overview__content">
+					<div class="dp-overview__items" id="menuItems"></div>
+					<div class="dp-overview__total">
+						<div class="dp-overview__total-number" id="menuTotal"></div>
+						<div class="dp-overview__total-title">Total:</div>
+					</div>
+				</div>
+				<div class="dp-overview__print">
+					<button class="btn dp-btn--primary dp-overview__print-btn">Print Full Recipe</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+	<!-- The application JavaScript code -->
+	<script type="module" src="js/app.js"></script>
+	<!-- TODO: Here you should include JS code for your other views -->
+</body>
+
+</html>

@@ -1,10 +1,11 @@
 'use strict';
 
-export default class HomeView {
+export default class MainView {
 	constructor(container, model) {
 		this.container = container;
 		this.model = model;
 
+		this.guestsContainer = container.find('#numberOfGuests');
 		this.itemsContainer = container.find("#dinnerItems");
 	}
 
@@ -23,5 +24,10 @@ export default class HomeView {
 				`
 			)).join('')}
 		`);
+	}
+
+	renderNumberOfGuests() {
+		const guests = this.model.getNumberOfGuests()
+		this.guestsContainer.html(`My Dinner: ${guests} ${guests > 1 ? 'people' : 'person'}`);
 	}
 }

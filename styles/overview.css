@@ -1,0 +1,134 @@
+.dp-overview {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+}
+
+.dp-overview .dp-overview__top-bar {
+	align-items: center;
+	border-bottom: 1px solid darkgray;
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 20px;
+}
+
+.dp-overview .dp-overview__back-btn {
+	border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+}
+
+.dp-overview .dp-overview__content {
+	border-bottom: 1px solid darkgray;
+	display: flex;
+	justify-content: center;
+	padding-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+	.dp-overview .dp-overview__content {
+		flex-direction: column;
+		padding-bottom: 0;
+	}
+}
+
+.dp-overview .dp-overview__guests {
+	font-weight: 300;
+	margin: 0;
+}
+
+@media (max-width: 767px) {
+	.dp-overview .dp-overview__guests {
+		font-size: 18px;
+	}
+}
+
+.dp-overview .dp-overview__items {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 20px;
+}
+
+@media (max-width: 767px) {
+	.dp-overview .dp-overview__items {
+		padding: 0;
+	}
+}
+
+.dp-overview .dp-overview__item {
+	border-radius: 2px;
+	box-shadow: 2px 2px #888;
+	display: flex;
+	flex-direction: column;
+	margin: 20px;
+	max-width: 140px;
+	min-height: 188px;
+	transition: box-shadow 100ms linear;
+}
+
+
+.dp-overview .dp-overview__item-title {
+	background-color: whitesmoke;
+	border-bottom-left-radius: 2px;
+	border-bottom-right-radius: 2px;
+	flex: 1;
+	font-size: 16px;
+	font-weight: 200;
+	padding: 5px;
+	text-align: center;
+	margin: 0;
+}
+
+.dp-overview .dp-overview__item-img > img {
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+	height: 140px;
+	max-width: 100%;
+	object-fit: cover;
+}
+
+.dp-overview .dp-overview__dish-price {
+	color: darkred;
+	margin: 0 20px;
+	text-align: right;
+}
+
+.dp-overview .dp-overview__total {
+	align-items: flex-end;
+	border-left: 1px solid darkgray;
+	display: flex;
+	flex-direction: column-reverse;
+	margin: 40px 0 20px;
+	padding: 0 20px;
+}
+
+.dp-overview .dp-overview__total-number {
+	color: darkred;
+}
+
+.dp-overview .dp-overview__total-title {
+	padding-bottom: 10px;
+	width: 100%;
+}
+
+.dp-overview .dp-overview__print {
+	display: flex;
+	justify-content: center;
+	padding: 40px 20px;
+	width: 100%;
+}
+
+@media (max-width: 767px) {
+	.dp-overview .dp-overview__total {
+		border-left: 0;
+		flex-direction: row-reverse;
+		justify-content: center;
+		margin: 20px;
+		padding: 0;
+	}
+
+	.dp-overview .dp-overview__total-title {
+		padding: 0 5px 0;
+		width: auto;
+	}
+}

@@ -32,13 +32,16 @@ export default class DinnerModel {
 		// and selected dishes for the dinner menu
 		/** @private @type {number} */
 		this.totalGuests = 0;
-		/** @private @type {Array.<Dish>} */
-		this.selectedDishes = [];
+		this.selectedDishes = {
+			starter: null,
+			mainDish: null,
+			dessert: null
+		};
 	}
 
 	/** @param {number} num */
 	setNumberOfGuests(num) {
-		totalGuests = num;
+		this.totalGuests = num;
 	}
 
 	getNumberOfGuests() {
@@ -48,36 +51,72 @@ export default class DinnerModel {
 	//Returns the dish that is on the menu for selected type
 	/** @param {string} type */
 	getSelectedDish(type) {
-		//TODO Lab 1
+		return this.selectedDishes[type];
 	}
 
 	//Returns all the dishes on the menu.
 	getFullMenu() {
-		//TODO Lab 1
-		return this.selectedDishes.slice();
+		// return a copy to avoid modifying the state
+		return Object.assign({}, this.selectedDishes);
 	}
 
 	//Returns all ingredients for all the dishes on the menu.
 	getAllIngredients() {
-		//TODO Lab 1
+		const menu = Object.values(this.model.getFullMenu());
+
+		let ingredients = [];
+
+		for (let dish of menu) {
+			ingredients.push(dish.ingredients);
+		}
+
+		return ingredients;
 	}
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	getTotalMenuPrice() {
-		//TODO Lab 1
+		const menu = Object.values(this.getFullMenu());
+
+		let total = 0;
+		for (let dish of menu) {
+			if (dish) {
+				total += dish.ingredients.reduce((a, b) => ({
+					price: a.price + b.price
+				})).price;
+			}
+		}
+
+		return total * this.getNumberOfGuests();
+	}
+
+	// return the total price for 1 dish multiplied by the number of guests
+	/** @param {number} id */
+	getDishPrice(id) {
+		const dish = this.getDish(id);
+		if (dish) {
+			return dish.ingredients.reduce((a, b) => ({
+				price: a.price + b.price
+			})).price * this.getNumberOfGuests();
+		}
 	}
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	/** @param {number} id */
 	addDishToMenu(id) {
-		//TODO Lab 1
+		const dish = this.getDish(id);
+		if (dish) {
+			this.selectedDishes[dish.type] = dish;
+		}
 	}
 
 	//Removes dish from menu
 	/** @param {number} id */
 	removeDishFromMenu(id) {
-		//TODO Lab 1
+		const dish = this.getDish(id);
+		if (dish) {
+			this.selectedDishes[dish.type] = null;
+		}
 	}
 
 	/**
@@ -111,7 +150,7 @@ export default class DinnerModel {
 	 * @param {number} id
 	 *  */
 	getDish(id) {
-		for (key in dishes) {
+		for (let key in dishes) {
 			if (dishes[key].id == id) {
 				return dishes[key];
 			}
