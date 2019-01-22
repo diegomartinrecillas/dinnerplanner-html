@@ -7,18 +7,22 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Dinner planner</title>
 
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<!-- Styles -->
 	<link rel="stylesheet" href="./styles/commons.css" />
+	<link rel="stylesheet" href="./styles/sidebar.css" />
 	<link rel="stylesheet" href="./styles/main.css" />
 
 </head>
 
-<body>
-	<div class="dp-container">
+<body class="dp-body">
+	<div id="container" class="dp-container">
 		<div class="dp-header">
-			<h1 class="dp-header__title">Dinner planner</h1>
+			<h1 class="dp-header__title">Dinner Planner</h1>
 		</div>
 
 		<div class="dp-content">
@@ -26,33 +30,65 @@
 				<div class="dp-main__sidebar">
 					<div class="dp-sidebar">
 						<div class="dp-sidebar__header">
-							My Dinner
+							<h2 class="dp-sidebar__title">
+								My Dinner
+							</h2>
+							<div class="dp-sm-only">
+								<button class="navbar-toggler" type="button">
+									<i class="fas fa-bars"></i>
+								</button>
+							</div>
 						</div>
 						<div class="dp-sidebar__people">
-							People
+							<h3 class="dp-sidebar__people-title">
+								People
+							</h3>
+							<div>
+								<input type="number" class="form-control w-50" />
+							</div>
 						</div>
 						<div class="dp-sidebar__sub-header">
-							Dish Name - Cost
+							<p>
+								Dish name
+							</p>
+							<p>
+								Cost
+							</p>
 						</div>
 						<div class="dp-sidebar__total">
-							Total
+							SEK 0.00
 						</div>
 						<div class="dp-sidebar__confirm">
-							<a href="/review"><button id="confirmDinnerBtn" class="btn dp-btn--primary">Confirm Dinner</button></a>
+							<a href="/review"><button id="confirmDinnerBtn" class="btn dp-btn--primary w-100">Confirm Dinner</button></a>
 						</div>
 					</div>
 				</div>
+
 				<div class="dp-main__content">
-					<div class="dp-select">
-						Select
-						<div>
-							<!-- ${this.model.getAllDishes().map((dish) => (
-							// this are the DinnerItems, clicking on one should load the its details
-							/*template*/`
-							<div>${dish.name}</div>
-							`)).join('')} -->
-						</div>
+					<div class="dp-main__search">
+						<h1 class="dp-main__search-title">
+							FIND A DISH
+						</h1>
+						<form class="dp-main__search-form">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Enter key words" />
+							</div>
+							<div class="form-group">
+								<select class="form-control" id="dishTypeSelect">
+									<option>All</option>
+									<option>Main Course</option>
+									<option>Side Dish</option>
+									<option>Dessert</option>
+									<option>Appetizer</option>
+								</select>
+							</div>
+							<div>
+								<button type="submit" class="btn dp-btn--primary">Search</button>
+							</div>
+						</form>
 					</div>
+
+					<div class="dp-main__items" id="dinnerItems"></div>
 				</div>
 			</div>
 		</div>

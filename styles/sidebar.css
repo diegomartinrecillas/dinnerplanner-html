@@ -1,0 +1,76 @@
+.dp-sidebar {
+	display: flex;
+	flex-direction: column;
+	padding: 20px 0;
+}
+
+@media (max-width: 767px) {
+	.dp-sidebar {
+		border-bottom: 1px solid darkgray;
+		padding: 0;
+	}
+}
+
+.dp-sidebar .dp-sidebar__header {
+	align-items: center;
+	flex: 1;
+	display: flex;
+	justify-content: space-between;
+}
+
+.dp-sidebar .dp-sidebar__title {
+	font-size: 18px;
+	font-weight: bold;
+	line-height: normal;
+	margin-left: 10px;
+}
+
+@media (max-width: 767px) {
+	.dp-sidebar .dp-sidebar__title {
+		margin: 10px;
+	}
+}
+
+.dp-sidebar .dp-sidebar__people {
+	align-items: center;
+	display: flex;
+	margin: 0 20px 20px 10px;
+}
+
+.dp-sidebar .dp-sidebar__people-title {
+	font-size: 14px;
+	line-height: normal;
+	margin-right: 10px;
+}
+
+.dp-sidebar .dp-sidebar__sub-header {
+	align-items: center;
+	background-color: lightgray;
+	border-bottom: 1px solid darkgray;
+	border-left: 1px solid darkgray;
+	border-top: 1px solid darkgray;
+	display: flex;
+	justify-content: space-between;
+	padding: 0 10px
+}
+
+.dp-sidebar .dp-sidebar__sub-header > p {
+	margin: 5px 0;
+}
+
+.dp-sidebar .dp-sidebar__total {
+	color: darkred;
+	padding: 15px;
+	text-align: right;
+}
+
+.dp-sidebar .dp-sidebar__confirm {
+	padding: 0 10px;
+	width: 100%;
+}
+
+@media (max-width: 767px) {
+	.dp-sidebar .dp-sidebar__confirm {
+		padding: 0 10px 10px;
+	}
+}

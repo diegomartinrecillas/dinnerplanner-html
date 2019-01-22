@@ -1,12 +1,17 @@
 'use strict';
 
 import HomeView from './view/homeView.js';
+import MainView from './view/mainView.js';
 import DinnerModel from './model/dinnerModel.js';
 
 $(() => {
 	const model = new DinnerModel();
 	const container = $('#container');
-	const view = new HomeView(container, model);
+
+	const home = new HomeView(container, model);
+	const main = new MainView(container, model);
+
+	main.renderItems();
 	/**
 	 * IMPORTANT: app.js is the only place where you are allowed to
 	 * use the $('someSelector') to search for elements in the whole HTML.
