@@ -26,6 +26,7 @@
 
 @media (max-width: 767px) {
 	.dp-overview .dp-overview__content {
+		border-bottom: none;
 		flex-direction: column;
 		padding-bottom: 0;
 	}
@@ -132,3 +133,10 @@
 		width: auto;
 	}
 }
+
+@media (max-width: 767px) {
+	.dp-overview .dp-overview__print-btn {
+		width: 100%;
+	}
+}
+
