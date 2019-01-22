@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Dinner planner</title>
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<!-- Styles -->
+	<link rel="stylesheet" href="./styles/commons.css" />
+	<link rel="stylesheet" href="./styles/details.css" />
+
+
+</head>
+
+<body>
+	<div class="dp-container">
+		<div class="dp-header">
+			<h1 class="dp-header__title">Dinner planner</h1>
+		</div>
+
+		<div class="dp-content">
+			<div class="dp-details">
+				<div class="dp-details__sidebar">
+					<div class="dp-sidebar">
+						<div class="dp-sidebar__header">
+							My Dinner
+						</div>
+						<div class="dp-sidebar__people">
+							People
+						</div>
+						<div class="dp-sidebar__sub-header">
+							Dish Name - Cost
+						</div>
+						<div class="dp-sidebar__total">
+							Total
+						</div>
+						<div class="dp-sidebar__confirm">
+							<a href="/review"><button id="confirmDinnerBtn" class="btn dp-btn--primary">Confirm Dinner</button></a>
+						</div>
+					</div>
+				</div>
+				<div class="dp-details__content">
+						<div class="dp-flex">
+							<div class="dp-flex-i">
+								<div class="dp-details__dishName">
+									<h3>Lasagne</h3>
+								</div>
+								<div class="dp-details__dishImage">
+									<img src ="./images/lasagne-sideshot-1-lowres.jpg"  width="75%" height="75%"/>
+								</div>
+								<div class="dp-details__description">
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+								</div>
+								<div class="dp-details__backBtn">
+										<a href="/review"><button id="backToSearchBtn" class="btn dp-btn--primary">Back to Search</button></a>
+								</div>
+							</div>
+							<div class="dp-flex-i">
+								<div class="dp-details__ingredientsTable">
+									<div class="dp-details__ingredientsTitle">
+										<h5>INGREDIENTS FOR 3 PEOPLE</h5>
+									</div>
+									<div class="dp-details__ingredientsContent">
+										<div class="dp-details__ingredientsLine">
+												<div class="dp-details__ingredientsQnty">
+													<p>2 tbsp</p>
+												</div>
+												<div class="dp-details__ingredientsName">
+													<p>olive oil</p>
+												</div>
+												<div class="dp-details__ingredientsCurr">
+													<p>SEK</p>
+												</div>
+												<div class="dp-details__ingredientsPrice">
+													<p>0.20</p>
+												</div>
+										</div>
+										<div class="dp-details__ingredientsLine">
+												<div class="dp-details__ingredientsQnty">
+													<p>750 g</p>
+												</div>
+												<div class="dp-details__ingredientsName">
+													<p>lean beef mince</p>
+												</div>
+												<div class="dp-details__ingredientsCurr">
+													<p>SEK</p>
+												</div>
+												<div class="dp-details__ingredientsPrice">
+													<p>10.00</p>
+												</div>
+										</div>
+										<div class="dp-details__ingredientsLine">
+												<div class="dp-details__ingredientsQnty">
+													<p>90 g</p>
+												</div>
+												<div class="dp-details__ingredientsName">
+													<p>pack rosciutto</p>
+												</div>
+												<div class="dp-details__ingredientsCurr">
+													<p>SEK</p>
+												</div>
+												<div class="dp-details__ingredientsPrice">
+													<p>15.00</p>
+												</div>
+										</div>
+										<div class="dp-details__ingredientsLine">
+												<div class="dp-details__ingredientsQnty">
+													<p>100 ml</p>
+												</div>
+												<div class="dp-details__ingredientsName">
+													<p>tomato sauce</p>
+												</div>
+												<div class="dp-details__ingredientsCurr">
+													<p>SEK</p>
+												</div>
+												<div class="dp-details__ingredientsPrice">
+													<p>10.00</p>
+												</div>
+										</div>
+										<div class="dp-details__ingredientsLine">
+												<div class="dp-details__ingredientsQnty">
+													<p>200 ml</p>
+												</div>
+												<div class="dp-details__ingredientsName">
+													<p>hot beef stock</p>
+												</div>
+												<div class="dp-details__ingredientsCurr">
+													<p>SEK</p>
+												</div>
+												<div class="dp-details__ingredientsPrice">
+													<p>20.00</p>
+												</div>
+										</div>
+										<div class="dp-details__ingredientsLine">
+												<div class="dp-details__ingredientsQnty">
+													<p>300 g</p>
+												</div>
+												<div class="dp-details__ingredientsName">
+													<p>fresh pack lasagne sheets</p>
+												</div>
+												<div class="dp-details__ingredientsCurr">
+													<p>SEK</p>
+												</div>
+												<div class="dp-details__ingredientsPrice">
+													<p>5.00</p>
+												</div>
+										</div>
+										<div class="dp-details__ingredientsLine">
+												<div class="dp-details__ingredientsQnty">
+													<p>125 g</p>
+												</div>
+												<div class="dp-details__ingredientsName">
+													<p>ball mozzarella</p>
+												</div>
+												<div class="dp-details__ingredientsCurr">
+													<p>SEK</p>
+												</div>
+												<div class="dp-details__ingredientsPrice">
+													<p>12.00</p>
+												</div>
+										</div>
+										<div class="dp-details__ingredientsLine">
+												<div class="dp-details__ingredientsQnty">
+													<p>100 ml</p>
+												</div>
+												<div class="dp-details__ingredientsName">
+													<p>white sauce</p>
+												</div>
+												<div class="dp-details__ingredientsCurr">
+													<p>SEK</p>
+												</div>
+												<div class="dp-details__ingredientsPrice">
+													<p>5.00</p>
+												</div>
+										</div>
+									</div>
+									<div class="dp-details__tableFooter">
+										<div class="dp-details__addToMenu">
+											<a href="/review"><button id="backToSearchBtn" class="btn dp-btn--primary">Add to Menu</button></a>
+										</div>
+										<div class="dp-details__ingredientsTotalCurr">
+											<p>SEK</p>
+										</div>
+										<div class="dp-details__ingredientsTotal">
+											<p>77.20</p>
+										</div>
+									</div>
+								</div>
+							</div>	
+						</div>
+						<div class="dp-flex">
+							<div class="dp-details__preparation">
+								<h3>Preparation</h3>
+							</div>
+						</div>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+	<!-- The application JavaScript code -->
+	<script type="module" src="js/app.js"></script>
+	<!-- TODO: Here you should include JS code for your other views -->
+</body>
+
+</html>

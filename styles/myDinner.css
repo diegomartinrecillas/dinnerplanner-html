@@ -1,0 +1,43 @@
+.dp-myDinner {
+    display: flex;
+    flex-direction: column;
+	flex: 1;
+}
+
+
+.dp-myDinner .dp-myDinner__discriptionLine{
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+
+}
+
+.dp-myDinner .dp-myDinner__image{
+    display: flex;
+    flex: 0.3;
+    max-width: 100%;
+    object-fit: cover;
+    border: 
+
+
+}
+
+.dp-myDinner .dp-myDinner__dishDetails{
+    display: flex;
+    flex: 0.3;
+
+}
+
+.dp-myDinner .dp-myDinner__dinnerDetails{
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.dp-myDinner .dp-myDinner__dinnerDiscription{
+    display: flex;
+    flex-direction: column;
+    flex: 0.5;
+
+}

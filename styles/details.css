@@ -1,0 +1,134 @@
+.dp-details {
+	display: flex;
+	flex: 1;
+}
+
+.dp-details .dp-details__sidebar {
+	background-color: azure;
+	flex: 0.2;
+}
+
+.dp-details  .dp-details__content {
+	background-color: #cfe0e8;
+	flex: 0.8;
+}
+
+
+.dp-details .dp-details__dish{
+    flex: 1;
+    flex-direction: row;
+}
+
+.dp-details .dp-details__dishName {
+    padding: 10px;
+    padding-left: 30px;
+    
+}
+
+.dp-details .dp-details__dishImage {
+    display: flex;
+    padding-top: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+
+}
+
+.dp-details .dp-details__description {
+    font-weight: 300;
+    font-size: 12px;
+    padding: 30px;
+}
+
+
+.dp-details .dp-details__backBtn {
+    padding: 30px;
+}
+
+.dp-details .dp-details__preparation {
+    flex-direction: row;
+    flex: 1;
+    padding: 10px;
+    padding-left: 30px;
+
+}
+
+.dp-details .dp-details__ingredientsTable {
+    background-color: burlywood;
+}
+
+
+.dp-details .dp-details__ingredientsTitle {
+    padding: 30px;
+
+}
+
+.dp-details .dp-details__ingredientsContent{
+    padding-left: 10px;
+    
+   
+}
+
+.dp-details .dp-details__ingredientsLine {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.dp-details .dp-details__ingredientsQnty {
+    display: flex;
+    flex: 0.2;
+    font-weight: 300;
+    font-size: 12px;
+    
+}
+
+.dp-details .dp-details__ingredientsName {
+    display: flex;
+    flex: 0.4;
+    font-weight: 300;
+    font-size: 12px;
+  
+
+}
+
+.dp-details .dp-details__ingredientsCurr {
+    display: flex;
+    flex: 0.2;
+    font-weight: 300;
+    font-size: 12px;
+}
+
+.dp-details .dp-details__ingredientsPrice {
+    display: flex;
+    flex: 0.2;
+    font-weight: 300;
+    font-size: 12px;
+}
+
+.dp-details .dp-details__ingredientsTotalCurr{
+    display: flex;
+    flex: 0.2;
+    font-weight: 300;
+    font-size: 12px;
+}
+
+.dp-details .dp-details__ingredientsTotal {
+    display: flex;
+    flex: 0.2;
+    font-weight: 300;
+    font-size: 12px;
+}
+
+.dp-details .dp-details__tableFooter {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+    padding-bottom: 10px;
+ 
+}
+
+.dp-details .dp-details__addToMenu {
+    display: flex;
+    flex: 0.6;
+    padding-left: 10px;
+}
