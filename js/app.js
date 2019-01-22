@@ -2,6 +2,7 @@
 
 import HomeView from './view/homeView.js';
 import MainView from './view/mainView.js';
+import DetailsView from './view/detailsView.js';
 import OverviewView from './view/overviewView.js';
 
 import DinnerModel from './model/dinnerModel.js';
@@ -13,6 +14,7 @@ $(() => {
 	const home = new HomeView(container, model);
 	const main = new MainView(container, model);
 	const overview = new OverviewView(container, model);
+	const details = new DetailsView(container, model);
 
 	/**
 	 * IMPORTANT: app.js is the only place where you are allowed to

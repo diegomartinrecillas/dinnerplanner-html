@@ -6,7 +6,13 @@ export default class MainView {
 		this.model = model;
 
 		this.guestsContainer = container.find('#numberOfGuests');
-		this.itemsContainer = container.find("#dinnerItems");
+		this.itemsContainer = container.find('#dinnerItems');
+
+		this.guestsInput = container.find('#guestsInput');
+
+		// test number of guests
+		this.model.setNumberOfGuests(3);
+		this.guestsInput.val(this.model.getNumberOfGuests());
 
 		// render select dish and select dish again items
 		this.renderItems();
