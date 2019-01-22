@@ -8,7 +8,8 @@
 	<title>Dinner planner</title>
 
 	<!-- Font Awesome -->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+	 crossorigin="anonymous">
 
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -39,7 +40,7 @@
 								</button>
 							</div>
 						</div>
-						<div class="dp-sidebar__collapsible">
+						<div class="dp-sidebar__collapsible dp-lg-only">
 							<div class="dp-sidebar__people">
 								<h3 class="dp-sidebar__people-title">
 									People
@@ -56,20 +57,29 @@
 									Cost
 								</p>
 							</div>
+							<div class="dp-sidebar__dish">
+								<div class="dp-sidebar__dish-name">
+									Lasagne
+								</div>
+								<div class="dp-sidebar__dish-price">
+									77.20
+								</div>
+							</div>
 							<div class="dp-sidebar__total">
-								SEK 0.00
+								SEK 77.20
 							</div>
 							<div class="dp-sidebar__confirm">
 								<a href="/review"><button id="confirmDinnerBtn" class="btn dp-btn--primary w-100">Confirm Dinner</button></a>
 							</div>
 						</div>
+
 					</div>
 				</div>
 
 				<div class="dp-main__content">
 					<div class="dp-main__search dp-lg-only">
 						<h1 class="dp-main__search-title">
-							FIND A DISH
+							ADD ANOTHER ONE
 						</h1>
 						<form class="dp-main__search-form">
 							<div class="form-group">

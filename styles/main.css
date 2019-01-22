@@ -16,10 +16,7 @@
 
 @media (max-width: 767px) {
 	.dp-main .dp-main__sidebar {
-		position: absolute;
-		box-shadow: 0 2px #888;
-		background-color: white;
-		width: 100%;
+		border: none;
 	}
 }
 
@@ -85,6 +82,8 @@
 
 .dp-main .dp-main__item-title {
 	background-color: whitesmoke;
+	border-bottom-left-radius: 2px;
+	border-bottom-right-radius: 2px;
 	flex: 1;
 	font-size: 16px;
 	font-weight: 200;
@@ -94,6 +93,8 @@
 }
 
 .dp-main .dp-main__item-img>img {
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
 	height: 140px;
 	max-width: 100%;
 	object-fit: cover;
