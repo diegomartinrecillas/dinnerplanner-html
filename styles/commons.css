@@ -40,15 +40,21 @@
 	display: flex;
 }
 
-.dp-flex .dp-flex-i {
+@media (max-width: 767px) {
+	.dp-flex-sm-col {
+		flex-direction: column;
+	}
+}
+
+.dp-flex-i {
 	flex: 1;
 }
 
-.dp-flex .dp-flex-col {
+.dp-flex-col {
 	flex-direction: column;
 }
 
-.dp-flex .dp-flex-row {
+.dp-flex-row {
 	flex-direction: row;
 }
 

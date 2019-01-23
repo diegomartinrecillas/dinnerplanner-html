@@ -45,7 +45,7 @@
 									People
 								</h3>
 								<div>
-									<input type="number" class="form-control w-50" />
+									<input id="guestsInput" type="number" class="form-control w-50" />
 								</div>
 							</div>
 							<div class="dp-sidebar__sub-header">
@@ -60,7 +60,7 @@
 								SEK 0.00
 							</div>
 							<div class="dp-sidebar__confirm">
-								<a href="/review"><button id="confirmDinnerBtn" class="btn dp-btn--primary w-100">Confirm Dinner</button></a>
+								<a href="/overview.html"><button id="confirmDinnerBtn" class="btn dp-btn--primary w-100">Confirm Dinner</button></a>
 							</div>
 						</div>
 					</div>
@@ -71,7 +71,7 @@
 						<h1 class="dp-main__search-title">
 							FIND A DISH
 						</h1>
-						<form class="dp-main__search-form">
+						<form class="dp-main__search-form" onsubmit="return false;">
 							<div class="form-group">
 								<input type="text" class="form-control" placeholder="Enter key words" />
 							</div>

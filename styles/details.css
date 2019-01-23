@@ -1,20 +1,31 @@
 .dp-details {
-	display: flex;
-	flex: 1;
+    display: flex;
+    flex: 1;
+}
+
+@media (max-width: 767px) {
+    .dp-details {
+        flex-direction: column;
+    }
 }
 
 .dp-details .dp-details__sidebar {
-	background-color: azure;
-	flex: 0.2;
+    border-right: 1px solid darkgray;
+    flex: 0.2;
 }
 
-.dp-details  .dp-details__content {
-	background-color: #cfe0e8;
-	flex: 0.8;
+@media (max-width: 767px) {
+    .dp-details .dp-details__sidebar {
+        border: none;
+    }
+}
+
+.dp-details .dp-details__content {
+    flex: 0.8;
 }
 
 
-.dp-details .dp-details__dish{
+.dp-details .dp-details__dish {
     flex: 1;
     flex-direction: row;
 }
@@ -22,7 +33,10 @@
 .dp-details .dp-details__dishName {
     padding: 10px;
     padding-left: 30px;
-    
+}
+
+.dp-details .dp-details__dishName>h3 {
+    margin: 0;
 }
 
 .dp-details .dp-details__dishImage {
@@ -30,7 +44,22 @@
     padding-top: 5px;
     padding-left: 30px;
     padding-right: 30px;
+}
 
+.dp-details .dp-details__dishImage>img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+}
+
+@media (max-width: 767px) {
+    .dp-details .dp-details__dishImage {
+        padding: 0;
+    }
+
+    .dp-details .dp-details__dishImage>img {
+        width: 100%;
+    }
 }
 
 .dp-details .dp-details__description {
@@ -39,9 +68,26 @@
     padding: 30px;
 }
 
+@media (max-width: 767px) {
+    .dp-details .dp-details__description {
+        padding: 20px;
+    }
+}
+
 
 .dp-details .dp-details__backBtn {
     padding: 30px;
+}
+
+.dp-details .dp-details__backBtn>a>button {
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+}
+
+@media (max-width: 767px) {
+    .dp-details .dp-details__backBtn {
+        padding: 0 20px;
+    }
 }
 
 .dp-details .dp-details__preparation {
@@ -54,18 +100,19 @@
 
 .dp-details .dp-details__ingredientsTable {
     background-color: burlywood;
+    border-radius: 2px;
 }
 
 
 .dp-details .dp-details__ingredientsTitle {
     padding: 30px;
-
+    margin-top: 20px;
 }
 
-.dp-details .dp-details__ingredientsContent{
+.dp-details .dp-details__ingredientsContent {
     padding-left: 10px;
-    
-   
+
+
 }
 
 .dp-details .dp-details__ingredientsLine {
@@ -79,7 +126,7 @@
     flex: 0.2;
     font-weight: 300;
     font-size: 12px;
-    
+
 }
 
 .dp-details .dp-details__ingredientsName {
@@ -87,7 +134,7 @@
     flex: 0.4;
     font-weight: 300;
     font-size: 12px;
-  
+
 
 }
 
@@ -105,7 +152,7 @@
     font-size: 12px;
 }
 
-.dp-details .dp-details__ingredientsTotalCurr{
+.dp-details .dp-details__ingredientsTotalCurr {
     display: flex;
     flex: 0.2;
     font-weight: 300;
@@ -124,7 +171,7 @@
     justify-content: space-around;
     padding-top: 10px;
     padding-bottom: 10px;
- 
+
 }
 
 .dp-details .dp-details__addToMenu {

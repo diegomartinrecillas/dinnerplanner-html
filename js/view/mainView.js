@@ -6,7 +6,16 @@ export default class MainView {
 		this.model = model;
 
 		this.guestsContainer = container.find('#numberOfGuests');
-		this.itemsContainer = container.find("#dinnerItems");
+		this.itemsContainer = container.find('#dinnerItems');
+
+		this.guestsInput = container.find('#guestsInput');
+
+		// test number of guests
+		this.model.setNumberOfGuests(3);
+		this.guestsInput.val(this.model.getNumberOfGuests());
+
+		// render select dish and select dish again items
+		this.renderItems();
 	}
 
 	renderItems() {
@@ -14,12 +23,14 @@ export default class MainView {
 			${this.model.getAllDishes().map(dish => (
 				/* template */`
 				<div class="dp-main__item">
-					<div class="dp-main__item-img">
-						<img src="${`./images/${dish.image}`}" />
-					</div>
-					<h3 class="dp-main__item-title">
-						${dish.name}
-					</h3>
+					<a class="dp-main__link" href="details.html">
+						<div class="dp-main__item-img">
+							<img src="${`./images/${dish.image}`}" />
+						</div>
+						<h3 class="dp-main__item-title">
+							${dish.name}
+						</h3>
+					</a>
 				</div>
 				`
 			)).join('')}

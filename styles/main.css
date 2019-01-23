@@ -65,6 +65,17 @@
 	}
 }
 
+.dp-main .dp-main__link {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	color:#000;
+}
+
+.dp-main .dp-main__link:hover {
+	text-decoration: none;
+}
+
 .dp-main .dp-main__item {
 	border-radius: 2px;
 	box-shadow: 2px 2px #888;
