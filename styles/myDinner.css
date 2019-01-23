@@ -1,43 +1,80 @@
 .dp-myDinner {
     display: flex;
     flex-direction: column;
-	flex: 1;
+    flex: 1;
+	/* margin: 0 auto; */
+
+}
+
+.dp-myDinner .dp-myDinner__line{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-top: 50px;
+    padding-left: 30px;
 }
 
 
-.dp-myDinner .dp-myDinner__discriptionLine{
+.dp-myDinner .dp-myDinner__picContain{
     display: flex;
-    flex-direction: row;
-    flex: 1;
+    flex: 0.2;
 
 }
 
 .dp-myDinner .dp-myDinner__image{
-    display: flex;
-    flex: 0.3;
+    flex: .5;
     max-width: 100%;
+    height: 150px;
     object-fit: cover;
-    border: 
-
-
+    border: 2px solid;
 }
 
-.dp-myDinner .dp-myDinner__dishDetails{
-    display: flex;
-    flex: 0.3;
 
-}
 
 .dp-myDinner .dp-myDinner__dinnerDetails{
     display: flex;
     flex-direction: column;
-
+    flex: 0.3;
+   
 
 }
 
+.dp-myDinner .dp-myDinner__dishName {
+   font-size: 20;
+    
+}
+
+.dp-myDinner .dp-myDinner__dishDetails {
+    font-weight: 300;
+    font-size:  small;
+    display: flex;
+    flex-direction: column; 
+}
+
 .dp-myDinner .dp-myDinner__dinnerDiscription{
+    font-weight: 300;
+    font-size: small;
     display: flex;
     flex-direction: column;
     flex: 0.5;
+    padding-inline-start: 30px;
 
+}
+
+.dp-myDinner .dp-myDinner__top-bar {
+	align-items: center;
+	border-bottom: 1px solid darkgray;
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 20px;
+}
+
+.dp-myDinner .dp-myDinner__back-btn {
+	border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+}
+
+.dp-myDinner .dp-myDinner__guests {
+	font-weight: 300;
+	margin: 0;
 }

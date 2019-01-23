@@ -11,9 +11,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<!-- Styles -->
 	<link rel="stylesheet" href="./styles/commons.css" />
-    <link rel="stylesheet" href="./styles/details.css" />
     <link rel="stylesheet" href="./styles/myDinner.css" />
-
 
 </head>
 
@@ -21,45 +19,66 @@
 	<div class="dp-container">
 		<div class="dp-header">
 			<h1 class="dp-header__title">Dinner planner</h1>
-		</div>
+        </div>
+        
 		<div class="dp-content">
-			<div class="dp-myDinner dp-flex-col">
-				<div class="dp-flex dp-flex-row">
-                    <div>
+			<div class="dp-myDinner">
+                <div class="dp-myDinner__top-bar">
+                    <h3 class="dp-myDinner__guests" id="numberOfGuests"></h3>
+                    <div class="dp-lg-only">
+                        <button class="btn dp-btn--primary dp-overview__back-btn">Go back and edit dinner</button>
+                    </div>
+                    <div class="dp-sm-only">
+                        <button class="btn dp-btn--primary dp-overview__back-btn">Back</button>
+                    </div>
+                </div>
+				<div class="dp-myDinner__line">
+                    <div class="dp-myDinner__picContain">
                         <img src="images/lasagne-sideshot-1-lowres.jpg" class="dp-myDinner__image"/>
                     </div>
                     <div class="dp-myDinner__dinnerDetails">
-                        <div class="dp-details__dishName">
+                        <div class="dp-myDinner__dishName">
                             <h3>Lasagne</h3>
                         </div>
                         <div class="dp-myDinner__dishDetails">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                  veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                   commodo consequat.</p>
                         </div>
                     </div>
                     <div class="dp-myDinner__dinnerDiscription">
-                        <div><h4>Preparation</h4></div>
-                        <div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <div class="dp-myDinner__dinnerDiscription">
+                            <h4>Preparation</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                  veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                   commodo consequat. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
                         </div>
                     </div>
                 </div>
-                <div class="dp-flex dp-flex-row">
-                    <div class="dp-myDinner__image">
-    
+                <div class="dp-myDinner__line">
+                    <div class="dp-myDinner__picContain">
+                        <img src="images/lasagne-sideshot-1-lowres.jpg" class="dp-myDinner__image"/>
                     </div>
                     <div class="dp-myDinner__dinnerDetails">
-                        <div class="dp-details__dishName">
+                        <div class="dp-myDinner__dishName">
                             <h3>Lasagne</h3>
                         </div>
                         <div class="dp-myDinner__dishDetails">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+                                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
+                                commodo consequat. </p>
                         </div>
                     </div>
                     <div class="dp-myDinner__dinnerDiscription">
-                        <div><h4>Preparation</h4></div>
-                        
-                        <div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <div class="dp-myDinner__dinnerDiscription">
+                            <h4>Preparation</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+                                 veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                  commodo consequat.Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
                         </div>
                     </div>
                 </div>    

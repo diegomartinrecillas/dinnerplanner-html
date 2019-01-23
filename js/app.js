@@ -14,6 +14,7 @@ $(() => {
 	const main = new MainView(container, model);
 	const overview = new OverviewView(container, model);
 
+
 	// render select dish and select dish again items
 	main.renderItems();
 
@@ -31,6 +32,7 @@ $(() => {
 	overview.renderNumberOfGuests();
 	overview.renderItems();
 	overview.renderTotal();
+
 	/**
 	 * IMPORTANT: app.js is the only place where you are allowed to
 	 * use the $('someSelector') to search for elements in the whole HTML.
