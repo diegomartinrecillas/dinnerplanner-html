@@ -6,7 +6,7 @@
 
 }
 
-.dp-myDinner .dp-myDinner__line{
+.dp-myDinner .dp-myDinner__line {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -14,14 +14,20 @@
     padding-left: 30px;
 }
 
+@media (max-width: 767px) {
+    .dp-myDinner .dp-myDinner__line {
+        flex-direction: column;
+        padding: 0;
+    }
+}
 
-.dp-myDinner .dp-myDinner__picContain{
+.dp-myDinner .dp-myDinner__picContain {
     display: flex;
     flex: 0.2;
 
 }
 
-.dp-myDinner .dp-myDinner__image{
+.dp-myDinner .dp-myDinner__image {
     flex: .5;
     max-width: 100%;
     height: 150px;
@@ -29,29 +35,30 @@
     border: 2px solid;
 }
 
+@media (max-width: 767px) {
+    .dp-myDinner .dp-myDinner__image {
+        flex: 1;
+        height: 200px;
+        border: none;
+    }
+}
 
-
-.dp-myDinner .dp-myDinner__dinnerDetails{
+.dp-myDinner .dp-myDinner__dinnerDetails { 
     display: flex;
     flex-direction: column;
     flex: 0.3;
-   
-
-}
-
-.dp-myDinner .dp-myDinner__dishName {
-   font-size: 20;
-    
-}
-
-.dp-myDinner .dp-myDinner__dishDetails {
     font-weight: 300;
-    font-size:  small;
-    display: flex;
-    flex-direction: column; 
+    font-size: small;
 }
 
-.dp-myDinner .dp-myDinner__dinnerDiscription{
+@media (max-width: 767px) {
+    .dp-myDinner .dp-myDinner__dinnerDetails {
+        margin: 20px;
+    }
+
+}
+
+.dp-myDinner .dp-myDinner__dinnerDiscription {
     font-weight: 300;
     font-size: small;
     display: flex;
@@ -59,6 +66,14 @@
     flex: 0.5;
     padding-inline-start: 30px;
 
+}
+
+@media (max-width: 767px) {
+    .dp-myDinner .dp-myDinner__dinnerDiscription {
+        padding: 0;
+        margin: 20px;
+
+    }
 }
 
 .dp-myDinner .dp-myDinner__top-bar {
