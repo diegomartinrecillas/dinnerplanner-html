@@ -16,6 +16,25 @@ $(() => {
 	const overview = new OverviewView(container, model);
 	const details = new DetailsView(container, model);
 
+
+	// render select dish and select dish again items
+	main.renderItems();
+
+	// set the total number of guest to test the methods
+	model.setNumberOfGuests(1);
+
+	// test model functions on the overview view
+	model.addDishToMenu(1);
+	model.addDishToMenu(100);
+	model.addDishToMenu(200);
+	model.removeDishFromMenu(1);
+	model.addDishToMenu(2);
+
+
+	overview.renderNumberOfGuests();
+	overview.renderItems();
+	overview.renderTotal();
+
 	/**
 	 * IMPORTANT: app.js is the only place where you are allowed to
 	 * use the $('someSelector') to search for elements in the whole HTML.

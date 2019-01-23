@@ -1,43 +1,95 @@
 .dp-myDinner {
     display: flex;
     flex-direction: column;
-	flex: 1;
+    flex: 1;
+	/* margin: 0 auto; */
+
 }
 
-
-.dp-myDinner .dp-myDinner__discriptionLine{
+.dp-myDinner .dp-myDinner__line {
     display: flex;
     flex-direction: row;
-    flex: 1;
+    justify-content: space-evenly;
+    padding-top: 50px;
+    padding-left: 30px;
+}
+
+@media (max-width: 767px) {
+    .dp-myDinner .dp-myDinner__line {
+        flex-direction: column;
+        padding: 0;
+    }
+}
+
+.dp-myDinner .dp-myDinner__picContain {
+    display: flex;
+    flex: 0.2;
 
 }
 
-.dp-myDinner .dp-myDinner__image{
-    display: flex;
-    flex: 0.3;
+.dp-myDinner .dp-myDinner__image {
+    flex: .5;
     max-width: 100%;
+    height: 150px;
     object-fit: cover;
-    border: 
-
-
+    border: 2px solid;
 }
 
-.dp-myDinner .dp-myDinner__dishDetails{
-    display: flex;
-    flex: 0.3;
-
+@media (max-width: 767px) {
+    .dp-myDinner .dp-myDinner__image {
+        flex: 1;
+        height: 200px;
+        border: none;
+    }
 }
 
-.dp-myDinner .dp-myDinner__dinnerDetails{
+.dp-myDinner .dp-myDinner__dinnerDetails { 
     display: flex;
     flex-direction: column;
+    flex: 0.3;
+    font-weight: 300;
+    font-size: small;
+}
 
+@media (max-width: 767px) {
+    .dp-myDinner .dp-myDinner__dinnerDetails {
+        margin: 20px;
+    }
 
 }
 
-.dp-myDinner .dp-myDinner__dinnerDiscription{
+.dp-myDinner .dp-myDinner__dinnerDiscription {
+    font-weight: 300;
+    font-size: small;
     display: flex;
     flex-direction: column;
     flex: 0.5;
+    padding-inline-start: 30px;
 
+}
+
+@media (max-width: 767px) {
+    .dp-myDinner .dp-myDinner__dinnerDiscription {
+        padding: 0;
+        margin: 20px;
+
+    }
+}
+
+.dp-myDinner .dp-myDinner__top-bar {
+	align-items: center;
+	border-bottom: 1px solid darkgray;
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 20px;
+}
+
+.dp-myDinner .dp-myDinner__back-btn {
+	border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+}
+
+.dp-myDinner .dp-myDinner__guests {
+	font-weight: 300;
+	margin: 0;
 }
