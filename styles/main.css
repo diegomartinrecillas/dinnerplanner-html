@@ -78,7 +78,6 @@
 
 .dp-main .dp-main__item {
 	border-radius: 2px;
-	box-shadow: 2px 2px #888;
 	cursor: pointer;
 	display: flex;
 	flex-direction: column;
