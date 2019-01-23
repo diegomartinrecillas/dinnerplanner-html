@@ -125,6 +125,9 @@ export default class DinnerModel {
 	 * @param {string} filter
 	 */
 	getAllDishes(type, filter) {
+		type = type.toLowerCase();
+		filter = filter.toLowerCase();
+
 		return dishes.filter((dish) => {
 			let found = true;
 			if (!type) {
@@ -133,11 +136,11 @@ export default class DinnerModel {
 			if (filter) {
 				found = false;
 				dish.ingredients.forEach((ingredient) => {
-					if (ingredient.name.indexOf(filter) != -1) {
+					if (ingredient.name.toLowerCase().indexOf(filter) != -1) {
 						found = true;
 					}
 				});
-				if (dish.name.indexOf(filter) != -1) {
+				if (dish.name.toLowerCase().indexOf(filter) != -1) {
 					found = true;
 				}
 			}

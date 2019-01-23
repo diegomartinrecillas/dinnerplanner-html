@@ -9,18 +9,6 @@ export default class OverviewView {
 		this.totalContainer = container.find('#menuTotal');
 		this.guestsContainer = container.find('#numberOfGuests');
 
-
-		// set the total number of guest to test the methods
-		this.model.setNumberOfGuests(1);
-
-		// load mock data
-		// test model functions on the overview view
-		this.model.addDishToMenu(1);
-		this.model.addDishToMenu(100);
-		this.model.addDishToMenu(200);
-		this.model.removeDishFromMenu(1);
-		this.model.addDishToMenu(2);
-
 		// render dynamic data
 		this.renderNumberOfGuests();
 		this.renderItems();

@@ -99,3 +99,8 @@
 	margin: 5px;
 	padding: 3px 5px;
 }
+
+.dp-sidebar .dp-sidebar__dish-name {
+	flex: 1;
+	margin-left: 5px;
+}
