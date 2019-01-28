@@ -1,35 +1,13 @@
 'use strict';
 
 export default class SidebarView {
+	/**
+	 * @param {JQuery<HTMLElement>} container
+	 * @param {DinnerModel} model
+	 */
 	constructor(container, model) {
 		this.container = container;
 		this.model = model;
-	}
-
-	renderNumberOfGuests() {
-		this.container.find('#guestsInput').val(this.model.getNumberOfGuests());
-	}
-
-	renderSideMenuItems() {
-		const dishes =  Object.values(this.model.getFullMenu());
-
-		this.container.find('#sidebarDishContainer').html(/* template */`
-			${dishes.map((dish) => dish && (/* template */`
-				<div class="dp-sidebar__dish">
-					<div id="#dishName" class="dp-sidebar__dish-name">
-						${dish.name}
-					</div>
-					<div id="dishPrice" class="dp-sidebar__dish-price">
-						${this.model.getDishPrice(dish.id)} SEK
-					</div>
-				</div>
-			`
-			)).join('')}
-		`);
-	}
-
-	renderSideBarTotal() {
-		this.container.find('#totalPrice').html(`${this.model.getTotalMenuPrice()} SEK`);
 	}
 
 	render() {
@@ -40,12 +18,12 @@ export default class SidebarView {
 						My Dinner
 					</h2>
 					<div class="dp-sm-only">
-						<button class="navbar-toggler" type="button">
+						<button id="toggleNavbar" class="navbar-toggler" type="button">
 							<i class="fas fa-bars"></i>
 						</button>
 					</div>
 				</div>
-				<div class="dp-sidebar__collapsible dp-sidebar__collapsible_closed">
+				<div id="navbarCollapse" class="dp-sidebar__collapsible dp-sidebar__collapsible_closed">
 					<div class="dp-sidebar__people">
 						<h3 class="dp-sidebar__people-title">
 							People
@@ -55,12 +33,8 @@ export default class SidebarView {
 						</div>
 					</div>
 					<div class="dp-sidebar__sub-header">
-						<p>
-							Dish name
-						</p>
-						<p>
-							Cost
-						</p>
+						<p>Dish name</p>
+						<p>Cost</p>
 					</div>
 
 					<div id="sidebarDishContainer"></div>
@@ -76,8 +50,36 @@ export default class SidebarView {
 	}
 
 	afterRender() {
-		this.renderNumberOfGuests();
-		this.renderSideMenuItems();
-		this.renderSideBarTotal();
+		this.toggleNavbarBtn = this.container.find('#toggleNavbar');
+		this.navbarCollapse = this.container.find('#navbarCollapse');
+		this.guestsInput = this.container.find('#guestsInput');
+		this.totalPrice = this.container.find('#totalPrice');
+		this.dishes = this.container.find('#sidebarDishContainer');
+	}
+
+	renderNumberOfGuests() {
+		this.guestsInput.val(this.model.getNumberOfGuests());
+	}
+
+	renderSideMenuItems() {
+		const dishes =  Object.values(this.model.getFullMenu());
+
+		this.dishes.html(/* template */`
+			${dishes.map((dish) => dish && (/* template */`
+				<div class="dp-sidebar__dish">
+					<div id="#dishName" class="dp-sidebar__dish-name">
+						${dish.name}
+					</div>
+					<div id="dishPrice" class="dp-sidebar__dish-price">
+						${this.model.getDishPrice(dish.id)} SEK
+					</div>
+				</div>
+			`
+			)).join('')}
+		`);
+	}
+
+	renderSideBarTotal() {
+		this.totalPrice.html(`${this.model.getTotalMenuPrice()} SEK`);
 	}
 }

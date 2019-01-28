@@ -12,7 +12,7 @@ export default class SelectView {
 
 	render() {
 		this.container.html(/* template */ `
-			<div class="dp-main__search dp-lg-only">
+			<div class="dp-main__search">
 				<h1 id="mainTitle" class="dp-main__search-title"></h1>
 				<form class="dp-main__search-form" onsubmit="return false;">
 					<div class="form-group">

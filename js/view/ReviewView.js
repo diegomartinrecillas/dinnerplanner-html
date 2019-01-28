@@ -10,12 +10,7 @@ export default class ReviewView {
 		this.model = model;
 	}
 
-	renderNumberOfGuests() {
-		const guests = this.model.getNumberOfGuests();
-		this.container.find('#numberOfGuests').html(`My Dinner: ${guests} ${guests > 1 ? 'people' : 'person'}`);
-	}
-
-	render() {
+	render(myDinner) {
 		this.container.html(/*template*/ `
 			<div class="dp-overview">
 				<div class="dp-overview__top-bar">
@@ -30,12 +25,22 @@ export default class ReviewView {
 
 				<div id="contentContainer" class="dp-overview__content"></div>
 
-				${this.child !== 'my-dinner' ? /* template */`
+				${!myDinner ? /* template */`
 					<div class="dp-overview__print">
 						<a href="#/review/my-dinner"><button class="btn dp-btn--primary dp-overview__print-btn">Print Full Recipe</button></a>
 					</div> :
 				` : ''}
 			</div>
 		`);
+	}
+
+	afterRender() {
+		this.contentContainer = this.container.find('#contentContainer');
+		this.numberOfGuests = this.container.find('#numberOfGuests');
+	}
+
+	renderNumberOfGuests() {
+		const guests = this.model.getNumberOfGuests();
+		this.numberOfGuests.html(`My Dinner: ${guests} ${guests > 1 ? 'people' : 'person'}`);
 	}
 }

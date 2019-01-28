@@ -1,6 +1,10 @@
 'use strict';
 
 export default class HomeView {
+	/**
+	 * @param {JQuery<HTMLElement>} container
+	 * @param {DinnerModel} model
+	 */
 	constructor(container, model) {
 		this.container = container;
 		this.model = model;

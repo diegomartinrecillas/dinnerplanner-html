@@ -1,9 +1,13 @@
 'use strict';
 
-import OverviewView from '../view/overviewView.js';
-import MyDinnerView from '../view/myDinnerView.js';
-
 import AppRouter from './AppRouter.js';
+
+import OverviewView from '../view/OverviewView.js';
+import OverviewController from './OverviewController.js';
+
+import MyDinnerView from '../view/MyDinnerView.js';
+import MyDinnerController from './MyDinnerController.js';
+
 
 export default class ReviewController {
 	constructor(view, model) {
@@ -12,22 +16,29 @@ export default class ReviewController {
 	}
 
 	renderView() {
-		this.view.child = this.router.getLastFragment();
-
-		return this.view.render();
+		this.view.render(this.router.getLastFragment() === 'my-dinner');
 	}
 
 	viewDidRender() {
-		const container = this.view.container.find('#contentContainer');
-		// render sub view with router context
-		const content = this.router.getLastFragment() === 'my-dinner' ?
-			AppRouter.withRouter(this.router, new MyDinnerView(container, this.model)) :
-			AppRouter.withRouter(this.router, new OverviewView(container, this.model));
-
-		// render the content
-		this.view.container.find('#contentContainer').html(content.render());
-		content.afterRender && content.afterRender();
-
+		this.view.afterRender();
 		this.view.renderNumberOfGuests();
+
+		this.initSubRoutes();
+		this.loadSubRoutes();
+	}
+
+	initSubRoutes() {
+		this.myDinner = AppRouter.withRouter(this.router, new MyDinnerController(new MyDinnerView(this.view.contentContainer, this.model), this.model));
+		this.overview = AppRouter.withRouter(this.router, new OverviewController(new OverviewView(this.view.contentContainer, this.model), this.model));
+	}
+
+	loadSubRoutes() {
+		if (this.router.getLastFragment() === 'my-dinner') {
+			this.myDinner.renderView();
+			this.myDinner.viewDidRender();
+		} else {
+			this.overview.renderView();
+			this.overview.viewDidRender();
+		}
 	}
 }

@@ -92,9 +92,7 @@ export default class DinnerModel {
 		let total = 0;
 		for (let dish of menu) {
 			if (dish) {
-				total += dish.ingredients.reduce((a, b) => ({
-					price: a.price + b.price
-				})).price;
+				total += dish.ingredients.reduce((a, b) => a + b['price'], 0);
 			}
 		}
 
@@ -106,9 +104,7 @@ export default class DinnerModel {
 	getDishPrice(id) {
 		const dish = this.getDish(id);
 		if (dish) {
-			return dish.ingredients.reduce((a, b) => ({
-				price: a.price + b.price
-			})).price * this.getNumberOfGuests();
+			return dish.ingredients.reduce((a, b) => a + b['price'], 0) * this.getNumberOfGuests();
 		}
 	}
 

@@ -11,7 +11,7 @@ export default class MyDinnerView {
 	}
 
 	render() {
-		return (/*template*/ `
+		this.container.html(/*template*/ `
 			<div class="dp-myDinner">
 				<div class="dp-myDinner__line">
                     <div class="dp-myDinner__picContain">

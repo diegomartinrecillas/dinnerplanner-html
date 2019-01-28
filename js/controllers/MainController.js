@@ -18,7 +18,7 @@ export default class MainController {
 	}
 
 	renderView() {
-		return this.view.render();
+		this.view.render();
 	}
 
 	viewDidRender() {

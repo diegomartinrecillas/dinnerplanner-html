@@ -10,6 +10,25 @@ export default class OverviewView {
 		this.model = model;
 	}
 
+	render() {
+		this.container.html(/* template */`
+			<div class="dp-overview__items" id="menuItems"></div>
+			<div class="dp-overview__total">
+				<div class="dp-overview__total-number" id="menuTotal"></div>
+				<div class="dp-overview__total-title">Total:</div>
+			</div>
+		`);
+	}
+
+	afterRender() {
+		this.menuTotal = this.container.find('#menuTotal');
+		this.menuItems = this.container.find("#menuItems");
+	}
+
+	renderTotal() {
+		this.menuTotal.html(`${this.model.getTotalMenuPrice()} SEK`);
+	}
+
 	renderItems() {
 		const menu = Object.values(this.model.getFullMenu());
 
@@ -22,7 +41,7 @@ export default class OverviewView {
 			}
 		}
 
-		this.container.find("#menuItems").html( /* template */ `
+		this.menuItems.html( /* template */ `
 			${menu.map(dish => dish && (
 				/* template */`
 				<div class="dp-overview__dish">
@@ -39,24 +58,5 @@ export default class OverviewView {
 				`
 			)).join('')}
 		`);
-	}
-
-	renderTotal() {
-		this.container.find('#menuTotal').html(`${this.model.getTotalMenuPrice()} SEK`);
-	}
-
-	render() {
-		return (/* template */`
-			<div class="dp-overview__items" id="menuItems"></div>
-			<div class="dp-overview__total">
-				<div class="dp-overview__total-number" id="menuTotal"></div>
-				<div class="dp-overview__total-title">Total:</div>
-			</div>
-		`);
-	}
-
-	afterRender() {
-		this.renderTotal();
-		this.renderItems();
 	}
 }
