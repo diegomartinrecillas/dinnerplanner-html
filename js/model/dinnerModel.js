@@ -60,6 +60,18 @@ export default class DinnerModel {
 		return Object.assign({}, this.selectedDishes);
 	}
 
+	// is menu
+	isMenu() {
+		let isMenu = false;
+		Object.values(this.getFullMenu()).forEach(item => {
+			if (item != null) {
+				isMenu = true;
+				return;
+			}
+		});
+		return isMenu;
+	}
+
 	//Returns all ingredients for all the dishes on the menu.
 	getAllIngredients() {
 		const menu = Object.values(this.model.getFullMenu());
@@ -130,7 +142,7 @@ export default class DinnerModel {
 
 		return dishes.filter((dish) => {
 			let found = true;
-			if (!type) {
+			if (!type && !filter) {
 				return true; // return all the dishes for the case no filter is set and all is selected
 			}
 			if (filter) {
@@ -144,7 +156,7 @@ export default class DinnerModel {
 					found = true;
 				}
 			}
-			return dish.type == type && found;
+			return type === '' ? found : dish.type == type && found;
 		});
 	}
 

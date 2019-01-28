@@ -23,6 +23,11 @@
 		width: 100%;
 		background-color: white;
 	}
+
+	.dp-sidebar
+	.dp-sidebar__collapsible.dp-sidebar__collapsible_closed {
+		display: none;
+	}
 }
 
 .dp-sidebar .dp-sidebar__header {

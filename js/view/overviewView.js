@@ -1,18 +1,13 @@
 'use strict';
 
 export default class OverviewView {
+	/**
+	 * @param {JQuery<HTMLElement>} container
+	 * @param {DinnerModel} model
+	 */
 	constructor(container, model) {
 		this.container = container;
 		this.model = model;
-
-		this.menuContainer = container.find("#menuItems");
-		this.totalContainer = container.find('#menuTotal');
-		this.guestsContainer = container.find('#numberOfGuests');
-
-		// render dynamic data
-		this.renderNumberOfGuests();
-		this.renderItems();
-		this.renderTotal();
 	}
 
 	renderItems() {
@@ -27,7 +22,7 @@ export default class OverviewView {
 			}
 		}
 
-		this.menuContainer.html( /* template */ `
+		this.container.find("#menuItems").html( /* template */ `
 			${menu.map(dish => dish && (
 				/* template */`
 				<div class="dp-overview__dish">
@@ -47,11 +42,21 @@ export default class OverviewView {
 	}
 
 	renderTotal() {
-		this.totalContainer.html(`${this.model.getTotalMenuPrice()} SEK`)
+		this.container.find('#menuTotal').html(`${this.model.getTotalMenuPrice()} SEK`);
 	}
 
-	renderNumberOfGuests() {
-		const guests = this.model.getNumberOfGuests()
-		this.guestsContainer.html(`My Dinner: ${guests} ${guests > 1 ? 'people' : 'person'}`);
+	render() {
+		return (/* template */`
+			<div class="dp-overview__items" id="menuItems"></div>
+			<div class="dp-overview__total">
+				<div class="dp-overview__total-number" id="menuTotal"></div>
+				<div class="dp-overview__total-title">Total:</div>
+			</div>
+		`);
+	}
+
+	afterRender() {
+		this.renderTotal();
+		this.renderItems();
 	}
 }

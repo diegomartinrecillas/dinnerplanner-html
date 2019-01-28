@@ -1,15 +1,37 @@
 'use strict';
 
-import HomeView from './view/homeView.js';
-import MainView from './view/mainView.js';
-import DetailsView from './view/detailsView.js';
-import OverviewView from './view/overviewView.js';
+import HomeView from './view/HomeView.js';
+import MainView from './view/MainView.js';
+import ReviewView from './view/ReviewView.js';
 
-import DinnerModel from './model/dinnerModel.js';
+import HomeController from './controllers/HomeController.js';
+import MainController from './controllers/MainController.js';
+import ReviewController from './controllers/ReviewController.js';
+
+import DinnerModel from './model/DinnerModel.js';
+
+import AppRouter from './controllers/AppRouter.js';
 
 $(() => {
-	const model = new DinnerModel();
 	const container = $('#container');
+
+	const model = new DinnerModel();
+
+	const homeView = new HomeView(container, model);
+	const mainView = new MainView(container, model);
+	const reviewView = new ReviewView(container, model);
+
+	const homeController = new HomeController(homeView, model);
+	const mainController = new MainController(mainView, model);
+	const reviewController = new ReviewController(reviewView, model);
+
+	const routes = [
+		{ path: '/', controller: homeController },
+		{ path: '/main', controller: mainController },
+		{ path: '/review', controller: reviewController }
+	];
+
+	const router = new AppRouter(routes, container);
 
 	// set the total number of guest to test the methods
 	model.setNumberOfGuests(4);
@@ -17,28 +39,9 @@ $(() => {
 	// test model functions on the overview view
 	model.addDishToMenu(3); // starter
 	model.addDishToMenu(102); // main dish
-	model.addDishToMenu(202);// main dish
+	model.addDishToMenu(202); // main dish
 
-
-
-	const home = new HomeView(container, model);
-	const main = new MainView(container, model);
-	const overview = new OverviewView(container, model);
-	const details = new DetailsView(container, model);
-
-
-	// render select dish and select dish again items
-	main.renderItems();
-
-	// render selected dishes
-	main.renderSideMenuItems();
-	// render total
-	main.renderSideBarTotal();
-
-
-	overview.renderNumberOfGuests();
-	overview.renderItems();
-	overview.renderTotal();
+	router.start();
 
 	/**
 	 * IMPORTANT: app.js is the only place where you are allowed to
