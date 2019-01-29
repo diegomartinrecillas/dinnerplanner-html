@@ -30,6 +30,10 @@ export default class MainController {
 		this.loadSidebar();
 	}
 
+	remove() {
+		this.sidebar.remove();
+	}
+
 	initSubRoutes() {
 		this.sidebar = AppRouter.withRouter(this.router, new SidebarController(new SidebarView(this.view.sidebarContainer, this.model), this.model));
 		this.select = AppRouter.withRouter(this.router, new SelectController(new SelectView(this.view.contentContainer, this.model), this.model));

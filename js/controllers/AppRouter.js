@@ -12,20 +12,24 @@ export default class AppRouter {
 
 		// Get controller or fallback
 		const route = this.routes.filter(route => route.path === basePath)[0] || this.routes.filter(route => route.path === '*')[0];
+
+		if (this.controller && this.controller.remove) {
+			this.controller.remove();
+		}
 		// Abort if the controller is not defined
-		const controller = route && route.controller;
-		if (!controller) {
+		this.controller = route && route.controller;
+		if (!this.controller) {
 			console.error(`No controller defined for route: ${this.url}`);
 			return;
 		}
 		// Checks if there is something on the controller to render
-		if (controller.renderView) {
+		if (this.controller.renderView) {
 			// adds a router context to the controller
-			AppRouter.withRouter(this, controller);
+			AppRouter.withRouter(this, this.controller);
 			// render the controller
-			controller.renderView();
+			this.controller.renderView();
 			// if we have defined a post-render method, call it
-			controller.viewDidRender && controller.viewDidRender();
+			this.controller.viewDidRender && this.controller.viewDidRender();
 		} else {
 			console.error(`The controller at ${this.url} has no renderView method defined`);
 		}
@@ -67,7 +71,7 @@ export default class AppRouter {
 	}
 
 	static withRouter(router, obj) {
-		// attach the router context to an object
+		// attach the router context to the object
 		obj.router = router;
 
 		return obj;

@@ -41,6 +41,9 @@ $(() => {
 	model.addDishToMenu(102); // main dish
 	model.addDishToMenu(202); // main dish
 
+	model.addDishToMenu(202); // main dish
+
+
 	router.start();
 
 	/**

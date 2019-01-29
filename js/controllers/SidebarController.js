@@ -4,6 +4,11 @@ export default class SidebarController {
 	constructor(view, model) {
 		this.view = view;
 		this.model = model;
+
+		this.unsubscribe = this.model.totalGuests.subscribe(() => {
+			this.view.renderSideMenuItems();
+			this.view.renderSideBarTotal();
+		});
 	}
 
 	renderView() {
@@ -17,7 +22,11 @@ export default class SidebarController {
 		this.view.renderSideBarTotal();
 
 		$(this.view.toggleNavbarBtn).on('click', this.toggleNavbar.bind(this));
-		$(this.view.guestsInput).on('change', this.setNumberOfGuests.bind(this));
+		$(this.view.guestsInput).on('input', this.setNumberOfGuests.bind(this));
+	}
+
+	remove() {
+		this.model.totalGuests.unsubscribe(this.unsubscribe);
 	}
 
 	toggleNavbar() {
@@ -25,6 +34,13 @@ export default class SidebarController {
 	}
 
 	setNumberOfGuests(e) {
-		this.model.setNumberOfGuests(e.target.value);
+		let value = e.target.value;
+
+		if (value > 0) {
+			this.model.setNumberOfGuests(value);
+		} else {
+			this.view.guestsInput.val(0);
+			this.model.setNumberOfGuests(0);
+		}
 	}
 }

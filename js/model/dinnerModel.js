@@ -1,26 +1,6 @@
 "use strict";
 
-/**
- * @description Dish Interface
- * @typedef Dish
- * @type {Object}
- * @property {string} id
- * @property {string} name
- * @property {string} type
- * @property {string} image
- * @property {string} description
- * @property {Array.<DishIngredient>} ingredients
- */
-
-/**
- * @description Dish Ingredient Interface
- * @typedef DishIngredient
- * @type {Object}
- * @property {string} name
- * @property {number} quantity
- * @property {string} unit
- * @property {number} price
- */
+import Observable from '../utils/Observable.js';
 
  /**
   * @class
@@ -30,34 +10,32 @@ export default class DinnerModel {
 	constructor() {
 		//TODO Lab 1 implement the data structure that will hold number of guest
 		// and selected dishes for the dinner menu
-		/** @private @type {number} */
-		this.totalGuests = 0;
-		this.selectedDishes = {
+		this.totalGuests = new Observable(0);
+		this.selectedDishes = new Observable({
 			starter: null,
 			mainDish: null,
 			dessert: null
-		};
+		});
 	}
 
 	/** @param {number} num */
 	setNumberOfGuests(num) {
-		this.totalGuests = num;
+		this.totalGuests.next(num);
 	}
 
 	getNumberOfGuests() {
-		return this.totalGuests;
+		return this.totalGuests.getValue();
 	}
 
 	//Returns the dish that is on the menu for selected type
 	/** @param {string} type */
 	getSelectedDish(type) {
-		return this.selectedDishes[type];
+		return this.selectedDishes.getValue()[type];
 	}
 
 	//Returns all the dishes on the menu.
 	getFullMenu() {
-		// return a copy to avoid modifying the state
-		return Object.assign({}, this.selectedDishes);
+		return this.selectedDishes.getValue();
 	}
 
 	// is menu
@@ -92,7 +70,7 @@ export default class DinnerModel {
 		let total = 0;
 		for (let dish of menu) {
 			if (dish) {
-				total += dish.ingredients.reduce((a, b) => a + b['price'], 0);
+				total += dish.ingredients.reduce((a, b) => a + b.price, 0);
 			}
 		}
 
@@ -104,7 +82,7 @@ export default class DinnerModel {
 	getDishPrice(id) {
 		const dish = this.getDish(id);
 		if (dish) {
-			return dish.ingredients.reduce((a, b) => a + b['price'], 0) * this.getNumberOfGuests();
+			return dish.ingredients.reduce((a, b) => a + b.price, 0) * this.getNumberOfGuests();
 		}
 	}
 
@@ -114,7 +92,10 @@ export default class DinnerModel {
 	addDishToMenu(id) {
 		const dish = this.getDish(id);
 		if (dish) {
-			this.selectedDishes[dish.type] = dish;
+			const newState = this.selectedDishes.getValue();
+			newState[dish.type] = dish;
+
+			this.selectedDishes.next(newState);
 		}
 	}
 
@@ -123,7 +104,10 @@ export default class DinnerModel {
 	removeDishFromMenu(id) {
 		const dish = this.getDish(id);
 		if (dish) {
-			this.selectedDishes[dish.type] = null;
+			const newState = this.selectedDishes.getValue();
+			newState[dish.type] = null;
+
+			this.selectedDishes.next(newState);
 		}
 	}
 
@@ -168,6 +152,28 @@ export default class DinnerModel {
 		}
 	}
 }
+
+/**
+ * @description Dish Interface
+ * @typedef Dish
+ * @type {Object}
+ * @property {string} id
+ * @property {string} name
+ * @property {string} type
+ * @property {string} image
+ * @property {string} description
+ * @property {Array.<DishIngredient>} ingredients
+ */
+
+/**
+ * @description Dish Ingredient Interface
+ * @typedef DishIngredient
+ * @type {Object}
+ * @property {string} name
+ * @property {number} quantity
+ * @property {string} unit
+ * @property {number} price
+ */
 
 /**
  * @description the dishes variable contains an array of all the dishes in the database. each dish has id, name, type, image (name of the image file), description and array of ingredients. Each ingredient has name, quantity (a number), price (a number) and unit (string defining the unit i.e. "g", "slices", "ml". Unit can sometimes be empty like in the example of eggs where you just say "5 eggs" and not "5 pieces of eggs" or anything else.
