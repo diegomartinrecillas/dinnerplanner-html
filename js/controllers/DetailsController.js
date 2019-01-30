@@ -18,11 +18,13 @@ export default class DetailsController {
 
 	viewDidRender() {
 		this.view.afterRender();
+		this.view.renderNumberOfGuests();
 
 		this.view.addBtn.on('click', this.addMenuItem.bind(this));
 	}
 
 	addMenuItem() {
 		this.model.addDishToMenu(this.dish.id);
+		location = '#/main';
 	}
 }

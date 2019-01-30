@@ -33,12 +33,6 @@ $(() => {
 
 	const router = new AppRouter(routes, container);
 
-	// test model functions on the overview view
-	model.addDishToMenu(3); // starter
-	model.addDishToMenu(102); // main dish
-	model.addDishToMenu(202); // main dish
-
-
 	router.start();
 
 	/**

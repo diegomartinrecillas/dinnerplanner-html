@@ -5,10 +5,8 @@ export default class SidebarController {
 		this.view = view;
 		this.model = model;
 
-		this.unsubscribe = this.model.totalGuests.subscribe(() => {
-			this.view.renderSideMenuItems();
-			this.view.renderSideBarTotal();
-		});
+		this.unsubGuests = this.model.totalGuests.subscribe(this.updateSidebar.bind(this));
+		this.unsubDishes = this.model.selectedDishes.subscribe(this.updateSidebar.bind(this))
 	}
 
 	renderView() {
@@ -26,7 +24,13 @@ export default class SidebarController {
 	}
 
 	remove() {
-		this.model.totalGuests.unsubscribe(this.unsubscribe);
+		this.model.totalGuests.unsubscribe(this.unsubGuests);
+		this.model.selectedDishes.unsubscribe(this.unsubDishes);
+	}
+
+	updateSidebar() {
+		this.view.renderSideMenuItems();
+		this.view.renderSideBarTotal();
 	}
 
 	toggleNavbar() {
