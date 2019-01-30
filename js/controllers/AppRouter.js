@@ -11,7 +11,7 @@ export default class AppRouter {
 		const basePath = this.getBasePath();
 
 		// Get controller or fallback
-		const route = this.routes.filter(route => route.path === basePath)[0] || this.routes.filter(route => route.path === '*')[0];
+		const route = this.routes.find(route => route.path === basePath) || this.routes.find(route => route.path === '*');
 
 		if (this.controller && this.controller.remove) {
 			this.controller.remove();

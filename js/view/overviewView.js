@@ -32,16 +32,7 @@ export default class OverviewView {
 	}
 
 	renderItems() {
-		const menu = Object.values(this.model.getFullMenu());
-
-		let total = 0;
-		for (let dish of menu) {
-			if (dish) {
-				total += dish.ingredients.reduce((a, b) => ({
-					price: a.price + b.price
-				})).price;
-			}
-		}
+		const menu = this.model.getFullMenu();
 
 		this.menuItems.html(menu.map(dish => dish && (/* template */`
 			<div class="dp-overview__dish dp-overview__dish">

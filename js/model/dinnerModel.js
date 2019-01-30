@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 import Observable from '../utils/Observable.js';
 
@@ -10,12 +10,8 @@ export default class DinnerModel {
 	constructor() {
 		//TODO Lab 1 implement the data structure that will hold number of guest
 		// and selected dishes for the dinner menu
-		this.totalGuests = new Observable(0);
-		this.selectedDishes = new Observable({
-			starter: null,
-			mainDish: null,
-			dessert: null
-		});
+		this.totalGuests = new Observable(1);
+		this.selectedDishes = new Observable([]);
 	}
 
 	/** @param {number} num */
@@ -30,7 +26,7 @@ export default class DinnerModel {
 	//Returns the dish that is on the menu for selected type
 	/** @param {string} type */
 	getSelectedDish(type) {
-		return this.selectedDishes.getValue()[type];
+		return this.selectedDishes.getValue().find(dish => dish.type === type);
 	}
 
 	//Returns all the dishes on the menu.
@@ -39,42 +35,18 @@ export default class DinnerModel {
 	}
 
 	// is menu
-	isMenu() {
-		let isMenu = false;
-		Object.values(this.getFullMenu()).forEach(item => {
-			if (item != null) {
-				isMenu = true;
-				return;
-			}
-		});
-		return isMenu;
+	isMenuEmpty() {
+		return this.selectedDishes.getValue().length > 0;
 	}
 
 	//Returns all ingredients for all the dishes on the menu.
 	getAllIngredients() {
-		const menu = Object.values(this.model.getFullMenu());
-
-		let ingredients = [];
-
-		for (let dish of menu) {
-			ingredients.push(dish.ingredients);
-		}
-
-		return ingredients;
+		return this.getFullMenu().reduce((a, b) => [...a, ...b.ingredients], []);
 	}
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	getTotalMenuPrice() {
-		const menu = Object.values(this.getFullMenu());
-
-		let total = 0;
-		for (let dish of menu) {
-			if (dish) {
-				total += dish.ingredients.reduce((a, b) => a + b.price, 0);
-			}
-		}
-
-		return total * this.getNumberOfGuests();
+		return this.getAllIngredients().reduce((a, b) => a + b.price, 0) * this.getNumberOfGuests();
 	}
 
 	// return the total price for 1 dish multiplied by the number of guests
@@ -86,29 +58,37 @@ export default class DinnerModel {
 		}
 	}
 
+	/**
+	 * @description function that returns a dish of specific ID
+	 * @param {string} id
+	 *  */
+	getDish(id) {
+		for (let key in dishes) {
+			if (dishes[key].id == id) {
+				return dishes[key];
+			}
+		}
+	}
+
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	/** @param {number} id */
 	addDishToMenu(id) {
-		const dish = this.getDish(id);
-		if (dish) {
-			const newState = this.selectedDishes.getValue();
-			newState[dish.type] = dish;
+		const newDish = this.getDish(id);
+		const newMenu = this.getFullMenu().filter(dish => newDish.type !== dish.type);
 
-			this.selectedDishes.next(newState);
-		}
+		newMenu.push(newDish);
+		this.selectedDishes.next(newMenu);
 	}
 
 	//Removes dish from menu
 	/** @param {number} id */
 	removeDishFromMenu(id) {
-		const dish = this.getDish(id);
-		if (dish) {
-			const newState = this.selectedDishes.getValue();
-			newState[dish.type] = null;
+		const newDish = this.getDish(id);
+		const newMenu = this.getFullMenu().filter((dish) => id !== dish.id);
 
-			this.selectedDishes.next(newState);
-		}
+		newMenu.push(newDish);
+		this.selectedDishes.next(newMenu);
 	}
 
 	/**
@@ -138,18 +118,6 @@ export default class DinnerModel {
 			}
 			return type === '' ? found : dish.type == type && found;
 		});
-	}
-
-	/**
-	 * @description function that returns a dish of specific ID
-	 * @param {number} id
-	 *  */
-	getDish(id) {
-		for (let key in dishes) {
-			if (dishes[key].id == id) {
-				return dishes[key];
-			}
-		}
 	}
 }
 

@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 export default class MyDinnerView {
 	/**
@@ -10,7 +10,7 @@ export default class MyDinnerView {
 		this.model = model;
 	}
 
-	render() {
+	render(selectedDishes) {
 		this.container.html(/*template*/ `
 			<div class="dp-myDinner">
 				<div class="dp-myDinner__line">

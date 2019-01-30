@@ -23,7 +23,6 @@ export default class MainController {
 
 	viewDidRender() {
 		this.view.afterRender();
-		this.view.renderTitle();
 
 		this.initSubRoutes();
 		this.loadSubRoutes();

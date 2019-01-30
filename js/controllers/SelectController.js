@@ -13,6 +13,7 @@ export default class SelectController {
 	viewDidRender() {
 		this.view.afterRender();
 		this.view.renderItems();
+		this.view.renderTitle();
 
 		this.addSearchBtnListener();
 	}

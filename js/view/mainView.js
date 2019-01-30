@@ -27,15 +27,5 @@ export default class MainView {
 	afterRender() {
 		this.sidebarContainer = this.container.find('#sidebarContainer');
 		this.contentContainer = this.container.find('#contentContainer');
-		this.dishSearchInput = this.container.find('#dishSearchInput');
-		this.dishTypeSelect = this.container.find('#dishTypeSelect');
-		this.dishSearchBtn = this.container.find('#dishSearchBtn');
-		this.title = this.container.find('#mainTitle');
-	}
-
-	renderTitle() {
-		this.title.html(`${
-			this.model.isMenu() ? 'ADD ANOTHER ONE' : 'FIND A DISH'
-		}`);
 	}
 }

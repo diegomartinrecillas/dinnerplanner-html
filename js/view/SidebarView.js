@@ -62,7 +62,7 @@ export default class SidebarView {
 	}
 
 	renderSideMenuItems() {
-		const dishes =  Object.values(this.model.getFullMenu());
+		const dishes = this.model.getFullMenu();
 
 		this.dishes.html(/* template */`
 			${dishes.map((dish) => dish && (/* template */`

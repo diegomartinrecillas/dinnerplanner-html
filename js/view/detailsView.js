@@ -180,5 +180,6 @@ export default class DetailsView {
 
 	afterRender() {
 		this.container.find('#guestsInput').val(this.model.getNumberOfGuests());
+		this.addBtn = this.container.find('#backToSearchBtn');
 	}
 }

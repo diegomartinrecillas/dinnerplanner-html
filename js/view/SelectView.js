@@ -51,4 +51,10 @@ export default class SelectView {
 			))
 		);
 	}
+
+	renderTitle() {
+		this.title.html(`${
+			this.model.isMenuEmpty() ? 'ADD ANOTHER ONE' : 'FIND A DISH'
+		}`);
+	}
 }
