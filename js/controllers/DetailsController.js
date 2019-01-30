@@ -7,7 +7,13 @@ export default class DetailsController {
 	}
 
 	renderView() {
-		this.view.render();
+		this.dish = this.model.getDish(this.router.getLastFragment())
+
+		if (this.dish != null) {
+			this.view.render(this.dish);
+		} else {
+			location = '#/main';
+		}
 	}
 
 	viewDidRender() {

@@ -35,9 +35,13 @@ export default class MainController {
 	}
 
 	initSubRoutes() {
-		this.sidebar = AppRouter.withRouter(this.router, new SidebarController(new SidebarView(this.view.sidebarContainer, this.model), this.model));
-		this.select = AppRouter.withRouter(this.router, new SelectController(new SelectView(this.view.contentContainer, this.model), this.model));
-		this.details = AppRouter.withRouter(this.router, new DetailsController(new DetailsView(this.view.contentContainer, this.model), this.model));
+		const sidebarView = new SidebarView(this.view.sidebarContainer, this.model);
+		const selectView = new SelectView(this.view.contentContainer, this.model);
+		const detailsView = new DetailsView(this.view.contentContainer, this.model);
+
+		this.sidebar = AppRouter.withRouter(this.router, new SidebarController(sidebarView, this.model));
+		this.select = AppRouter.withRouter(this.router, new SelectController(selectView, this.model));
+		this.details = AppRouter.withRouter(this.router, new DetailsController(detailsView, this.model));
 	}
 
 	loadSubRoutes() {

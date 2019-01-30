@@ -10,14 +10,14 @@ export default class DetailsView {
 		this.model = model;
 	}
 
-	render() {
+	render(dish) {
 		// this is the dish id
 		this.container.html(/* template */`
 			<div class="dp-details ">
 				<div class="dp-flex dp-flex-sm-col">
 					<div class="dp-flex-i">
 						<div class="dp-details__dishName">
-							<h3>LASAGNE</h3>
+							<h3>${dish.name}</h3>
 						</div>
 						<div class="dp-details__dishImage">
 							<img src="./images/lasagne-sideshot-1-lowres.jpg" width="75%" height="75%" />
