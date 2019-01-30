@@ -27,6 +27,7 @@ export default class DetailsController {
 
 	updateView() {
 		this.view.renderIngredients(this.dish);
+		this.view.renderIngredientsTotal(this.dish);
 		this.view.renderNumberOfGuests();
 	}
 

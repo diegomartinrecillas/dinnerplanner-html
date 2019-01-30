@@ -47,7 +47,7 @@ export default class DetailsView {
 								<p>SEK</p>
 							</div>
 							<div class="dp-details__ingredientsTotal">
-								<p>${this.model.getDishPrice(dish.id).toFixed(2)}</p>
+								<p id="ingredientsTotal"></p>
 							</div>
 						</div>
 					</div>
@@ -66,6 +66,7 @@ export default class DetailsView {
 
 	afterRender() {
 		this.ingredients = this.container.find('#ingredients');
+		this.ingredientsTotal = this.container.find('#ingredientsTotal');
 		this.numberOfGuests = this.container.find('#numberOfGuests');
 		this.addBtn = this.container.find('#addToMenu');
 	}
@@ -100,6 +101,11 @@ export default class DetailsView {
 		this.numberOfGuests.html(/* template */ `
 			${`Ingredients for ${guests} ${guests > 1 ? 'people' : 'person'}`}
 		`);
+	}
+
+	renderIngredientsTotal(dish) {
+		console.log('total')
+		this.ingredientsTotal.html(`${this.model.getDishPrice(dish.id).toFixed(2)}`);
 	}
 
 	getIngredientAmount(quantity, guests) {
