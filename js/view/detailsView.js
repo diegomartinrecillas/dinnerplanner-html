@@ -15,7 +15,7 @@ export default class DetailsView {
 		this.container.html(/* template */`
 			<div class="dp-details ">
 				<div class="dp-flex dp-flex-sm-col">
-					<div class="dp-flex-i">
+					<div class="dp-flex dp-flex-col dp-flex-i">
 						<div class="dp-details__dishName">
 							<h3>${dish.name}</h3>
 						</div>
@@ -29,40 +29,38 @@ export default class DetailsView {
 							<a href="#/main"><button id="backToSearchBtn" class="btn dp-btn--primary">Back to Search</button></a>
 						</div>
 					</div>
-					<div class="dp-flex-i">
-						<div class="dp-details__ingredientsTable">
-							<div class="dp-details__ingredientsTitle">
-								<h5 id="numberOfGuests"></h5>
+					<div class="dp-flex-i dp-details__color">
+						<div class="dp-details__ingredientsTitle">
+							<h5 id="numberOfGuests"></h5>
+						</div>
+						<div class="dp-details__ingredientsContent">
+							${dish.ingredients.map((ingredient) => (/* template */`
+								<div class="dp-details__ingredientsLine">
+									<div class="dp-details__ingredientsQnty">
+										<p>${ingredient.quantity * this.model.getNumberOfGuests()} ${ingredient.unit}</p>
+									</div>
+									<div class="dp-details__ingredientsName">
+										<p>${ingredient.name}</p>
+									</div>
+									<div class="dp-details__ingredientsCurr">
+										<p>SEK</p>
+									</div>
+									<div class="dp-details__ingredientsPrice">
+										<p>${(ingredient.price * this.model.getNumberOfGuests()).toFixed(2)}</p>
+									</div>
+								</div>													
+							`
+							)).join('')}
+						</div>
+						<div class="dp-details__tableFooter">
+							<div class="dp-details__addToMenu">
+								<button id="addToMenu" class="btn dp-btn--primary">Add to Menu</button>
 							</div>
-							<div class="dp-details__ingredientsContent">
-								${dish.ingredients.map((ingredient) => (/* template */`
-									<div class="dp-details__ingredientsLine">
-										<div class="dp-details__ingredientsQnty">
-											<p>${ingredient.quantity * this.model.getNumberOfGuests()} ${ingredient.unit}</p>
-										</div>
-										<div class="dp-details__ingredientsName">
-											<p>${ingredient.name}</p>
-										</div>
-										<div class="dp-details__ingredientsCurr">
-											<p>SEK</p>
-										</div>
-										<div class="dp-details__ingredientsPrice">
-											<p>${(ingredient.price * this.model.getNumberOfGuests()).toFixed(2)}</p>
-										</div>
-									</div>													
-								`
-								)).join('')}
+							<div class="dp-details__ingredientsTotalCurr">
+								<p>SEK</p>
 							</div>
-							<div class="dp-details__tableFooter">
-								<div class="dp-details__addToMenu">
-									<button id="addToMenu" class="btn dp-btn--primary">Add to Menu</button>
-								</div>
-								<div class="dp-details__ingredientsTotalCurr">
-									<p>SEK</p>
-								</div>
-								<div class="dp-details__ingredientsTotal">
-									<p>${this.model.getDishPrice(dish.id).toFixed(2)}</p>
-								</div>
+							<div class="dp-details__ingredientsTotal">
+								<p>${this.model.getDishPrice(dish.id).toFixed(2)}</p>
 							</div>
 						</div>
 					</div>
