@@ -38,7 +38,7 @@ export default class DetailsView {
 								${dish.ingredients.map((ingredient) => (/* template */`
 									<div class="dp-details__ingredientsLine">
 										<div class="dp-details__ingredientsQnty">
-											<p>${ingredient.quantity} ${ingredient.unit}</p>
+											<p>${ingredient.quantity * this.model.getNumberOfGuests()} ${ingredient.unit}</p>
 										</div>
 										<div class="dp-details__ingredientsName">
 											<p>${ingredient.name}</p>
@@ -47,7 +47,7 @@ export default class DetailsView {
 											<p>SEK</p>
 										</div>
 										<div class="dp-details__ingredientsPrice">
-											<p>${ingredient.price.toFixed(2)}</p>
+											<p>${(ingredient.price * this.model.getNumberOfGuests()).toFixed(2)}</p>
 										</div>
 									</div>													
 								`
