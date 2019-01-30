@@ -111,9 +111,11 @@
 }
 
 .dp-details .dp-details__ingredientsContent {
-    padding-left: 30px;
-
-
+    border-top: 1px solid #777;
+    border-bottom: 1px solid #777;
+    margin: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
 }
 
 .dp-details .dp-details__ingredientsLine {
@@ -171,9 +173,7 @@
 .dp-details .dp-details__tableFooter {
     display: flex;
     justify-content: space-around;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 30px;
+    margin: 0 10px;
 
 }
 
