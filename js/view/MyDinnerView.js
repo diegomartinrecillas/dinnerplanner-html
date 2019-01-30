@@ -12,54 +12,22 @@ export default class MyDinnerView {
 
 	render(selectedDishes) {
 		this.container.html(/*template*/ `
-			<div class="dp-myDinner">
-				<div class="dp-myDinner__line">
-                    <div class="dp-myDinner__picContain">
-                        <img src="images/lasagne-sideshot-1-lowres.jpg" class="dp-myDinner__image"/>
-                    </div>
-                    <div class="dp-myDinner__dinnerDetails">
-                        <h3>Lasagne</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                    commodo consequat. </p>
-                    </div>
-                    <div class="dp-myDinner__dinnerDiscription">
-                        <h4>Preparation</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                  veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                   commodo consequat. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-                    </div>
-                </div>
-                <div class="dp-myDinner__line">
-                    <div class="dp-myDinner__picContain">
-                        <img src="images/lasagne-sideshot-1-lowres.jpg" class="dp-myDinner__image"/>
-                    </div>
-                    <div class="dp-myDinner__dinnerDetails">
-                        <h3>Lasagne</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                commodo consequat. </p>
-                        <!-- <div class="dp-myDinner__dishName">
-                            <h3>Lasagne</h3>
+            <div class="dp-my-dinner">
+                ${this.model.getFullMenu().map(dish => (/* template */`
+                    <div class="dp-my-dinner__dish">
+                        <div class="dp-my-dinner__img-container">
+                            <img src="images/${dish.image}" class="dp-my-dinner__img"/>
                         </div>
-                        <div class="dp-myDinner__dishDetails">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                commodo consequat. </p>
-                        </div> -->
+                        <div class="dp-my-dinner__details">
+                            <h3 class="dp-my-dinner__name">${dish.name}</h3>
+                            <p class="dp-my-dinner__type">${dish.type}</p>
+                        </div>
+                        <div class="dp-my-dinner__description">
+                            <h4>PREPARATION</h4>
+                            <p>${dish.description}></p>
+                        </div>
                     </div>
-                    <div class="dp-myDinner__dinnerDiscription">
-                        <h4>Preparation</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                  veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                   commodo consequat. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-                    </div>
-                </div>
+                `)).join('')}
 			</div>
 		`);
 	}

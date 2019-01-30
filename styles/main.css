@@ -10,6 +10,7 @@
 }
 
 .dp-main .dp-main__sidebar {
+	background-color: white;
 	border-right: 1px solid darkgray;
 	flex: 0.2;
 }
@@ -17,11 +18,19 @@
 @media (max-width: 767px) {
 	.dp-main .dp-main__sidebar {
 		border: none;
+		position: fixed;
+		width: 100%;
 	}
 }
 
 .dp-main .dp-main__content {
 	flex: 0.8;
+}
+
+@media (max-width: 767px) {
+	.dp-main .dp-main__content {
+		margin-top: 3em;
+	}
 }
 
 .dp-main .dp-main__search-title {
