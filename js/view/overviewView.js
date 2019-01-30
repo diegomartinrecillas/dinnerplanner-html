@@ -1,5 +1,7 @@
 'use strict';
 
+import DishView from './DishView.js';
+
 export default class OverviewView {
 	/**
 	 * @param {JQuery<HTMLElement>} container
@@ -41,22 +43,12 @@ export default class OverviewView {
 			}
 		}
 
-		this.menuItems.html( /* template */ `
-			${menu.map(dish => dish && (
-				/* template */`
-				<div class="dp-overview__dish">
-					<div class="dp-overview__item">
-						<div class="dp-overview__item-img">
-							<img src="${`./images/${dish.image}`}" />
-						</div>
-						<h3 class="dp-overview__item-title">
-							${dish.name}
-						</h3>
-					</div>
-					<div class="dp-overview__dish-price">${this.model.getDishPrice(dish.id)} SEK</div>
-				</div>
-				`
-			)).join('')}
-		`);
+		this.menuItems.html(menu.map(dish => dish && (/* template */`
+			<div class="dp-overview__dish dp-overview__dish">
+				${new DishView(dish).render()}
+				<div class="dp-overview__dish-price">${this.model.getDishPrice(dish.id)} SEK</div>
+			</div>
+			`))
+		);
 	}
 }

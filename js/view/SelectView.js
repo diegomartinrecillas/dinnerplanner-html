@@ -1,4 +1,5 @@
 'use strict';
+import DishView from './DishView.js';
 
 export default class SelectView {
 	/**
@@ -44,22 +45,10 @@ export default class SelectView {
 	}
 
 	renderItems(type = '', filter = '') {
-		this.dishesContainer.html(/* template */ `
-			${this.model.getAllDishes(type, filter).map(dish => (
-				/* template */`
-				<div class="dp-main__item">
-					<a class="dp-main__link" href="#/main/${dish.id}">
-						<div class="dp-main__item-img">
-							<img src="${`./images/${dish.image}`}" />
-						</div>
-						<h3 class="dp-main__item-title">
-							${dish.name}
-						</h3>
-					</a>
-				</div>
-				`
-			)).join('')}
-			`
+		const dishes = this.model.getAllDishes(type, filter);
+		this.dishesContainer.html(dishes.map(dish => (
+				new DishView(dish, true).render()
+			))
 		);
 	}
 }

@@ -25,11 +25,11 @@ export default class ReviewView {
 
 				<div id="contentContainer" class="dp-overview__content"></div>
 
-				${!myDinner ? /* template */`
+				${!myDinner && /* template */`
 					<div class="dp-overview__print">
 						<a href="#/review/my-dinner"><button class="btn dp-btn--primary dp-overview__print-btn">Print Full Recipe</button></a>
-					</div> :
-				` : ''}
+					</div>
+				` || ''}
 			</div>
 		`);
 	}

@@ -33,9 +33,6 @@ $(() => {
 
 	const router = new AppRouter(routes, container);
 
-	// set the total number of guest to test the methods
-	model.setNumberOfGuests(4);
-
 	// test model functions on the overview view
 	model.addDishToMenu(3); // starter
 	model.addDishToMenu(102); // main dish

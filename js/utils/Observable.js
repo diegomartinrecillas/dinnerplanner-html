@@ -1,12 +1,11 @@
 export default class Observable {
 	constructor(value) {
-		this.observers = new Set();
-		this.value = value;
+		this.observers = new Set(); // set of subscribed functions
+		this.value = value; // current value of the observable
 	}
 
 	subscribe(observer) {
 		this.observers.add(observer);
-		console.log(this.observers)
 		return observer;
 	}
 
@@ -17,7 +16,7 @@ export default class Observable {
 	next(value) {
 		this.value = value;
 		for (let observer of this.observers) {
-			observer(value);
+			observer(this.getValue());
 		}
 	}
 
