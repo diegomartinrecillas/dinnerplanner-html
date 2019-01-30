@@ -20,7 +20,7 @@ export default class DetailsView {
 							<h3>${dish.name}</h3>
 						</div>
 						<div class="dp-details__dishImage">
-							<img src="./images/lasagne-sideshot-1-lowres.jpg" width="75%" height="75%" />
+							<img src="./images/${dish.image}" width="75%" height="75%" />
 						</div>
 						<div class="dp-details__description">
 							<p>${dish.type}<p>
