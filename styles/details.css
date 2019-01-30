@@ -173,8 +173,8 @@
 .dp-details .dp-details__tableFooter {
     display: flex;
     justify-content: space-around;
-    margin: 0 10px;
-
+    margin: 0 10px 10px 10px;
+    padding-left: 10px;
 }
 
 .dp-details .dp-details__addToMenu {
