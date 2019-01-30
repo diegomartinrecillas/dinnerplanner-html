@@ -14,13 +14,24 @@ export default class DetailsController {
 		} else {
 			location = '#/main';
 		}
+
+		this.unsubscribe = this.model.totalGuests.subscribe(this.updateView.bind(this));
 	}
 
 	viewDidRender() {
 		this.view.afterRender();
-		this.view.renderNumberOfGuests();
-
 		this.view.addBtn.on('click', this.addMenuItem.bind(this));
+
+		this.updateView();
+	}
+
+	updateView() {
+		this.view.renderIngredients(this.dish);
+		this.view.renderNumberOfGuests();
+	}
+
+	remove() {
+		this.model.totalGuests.unsubscribe(this.unsubscribe);
 	}
 
 	addMenuItem() {

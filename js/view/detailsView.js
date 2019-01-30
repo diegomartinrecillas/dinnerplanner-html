@@ -11,6 +11,7 @@ export default class DetailsView {
 	}
 
 	render(dish) {
+		const guests = this.model.getNumberOfGuests();
 		// this is the dish id
 		this.container.html(/* template */`
 			<div class="dp-details ">
@@ -31,27 +32,13 @@ export default class DetailsView {
 					</div>
 					<div class="dp-flex-i dp-details__color">
 						<div class="dp-details__ingredientsTitle">
+
 							<h5 id="numberOfGuests"></h5>
+
 						</div>
-						<div class="dp-details__ingredientsContent">
-							${dish.ingredients.map((ingredient) => (/* template */`
-								<div class="dp-details__ingredientsLine">
-									<div class="dp-details__ingredientsQnty">
-										<p>${ingredient.quantity * this.model.getNumberOfGuests()} ${ingredient.unit}</p>
-									</div>
-									<div class="dp-details__ingredientsName">
-										<p>${ingredient.name}</p>
-									</div>
-									<div class="dp-details__ingredientsCurr">
-										<p>SEK</p>
-									</div>
-									<div class="dp-details__ingredientsPrice">
-										<p>${(ingredient.price * this.model.getNumberOfGuests()).toFixed(2)}</p>
-									</div>
-								</div>													
-							`
-							)).join('')}
-						</div>
+
+						<div id="ingredients" class="dp-details__ingredientsContent"></div>
+
 						<div class="dp-details__tableFooter">
 							<div class="dp-details__addToMenu">
 								<button id="addToMenu" class="btn dp-btn--primary">Add to Menu</button>
@@ -78,16 +65,50 @@ export default class DetailsView {
 	}
 
 	afterRender() {
-		this.container.find('#guestsInput').val(this.model.getNumberOfGuests());
+		this.ingredients = this.container.find('#ingredients');
 		this.numberOfGuests = this.container.find('#numberOfGuests');
 		this.addBtn = this.container.find('#addToMenu');
+	}
 
+	renderIngredients(dish) {
+		const guests = this.model.getNumberOfGuests();
+
+		this.ingredients.html(/* template */ `
+			${dish.ingredients.map((ingredient) => (/* template */`
+				<div class="dp-details__ingredientsLine">
+					<div class="dp-details__ingredientsQnty">
+						<p>${this.getIngredientAmount(ingredient.quantity, guests)} ${ingredient.unit}</p>
+					</div>
+					<div class="dp-details__ingredientsName">
+						<p>${ingredient.name}</p>
+					</div>
+					<div class="dp-details__ingredientsCurr">
+						<p>SEK</p>
+					</div>
+					<div class="dp-details__ingredientsPrice">
+						<p>${(ingredient.price * guests).toFixed(2)}</p>
+					</div>
+				</div>
+			`
+			)).join('')}
+		`);
 	}
 
 	renderNumberOfGuests() {
 		const guests = this.model.getNumberOfGuests();
-		this.numberOfGuests.html(`Ingredients for ${guests} ${guests > 1 ? 'people' : 'person'}`);
+
+		this.numberOfGuests.html(/* template */ `
+			${`Ingredients for ${guests} ${guests > 1 ? 'people' : 'person'}`}
+		`);
 	}
 
+	getIngredientAmount(quantity, guests) {
+		let amount = quantity * guests;
 
+		if(Math.round(amount) !== amount) {
+            amount = amount.toFixed(2);
+		}
+
+		return amount;
+	}
 }

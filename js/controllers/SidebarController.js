@@ -40,11 +40,11 @@ export default class SidebarController {
 	setNumberOfGuests(e) {
 		let value = e.target.value;
 
-		if (value > 0) {
+		if (value > 1) {
 			this.model.setNumberOfGuests(value);
 		} else {
-			this.view.guestsInput.val(0);
-			this.model.setNumberOfGuests(0);
+			this.view.guestsInput.val(1);
+			this.model.setNumberOfGuests(1);
 		}
 	}
 }

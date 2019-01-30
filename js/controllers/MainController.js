@@ -31,6 +31,7 @@ export default class MainController {
 
 	remove() {
 		this.sidebar.remove();
+		this.details.remove();
 	}
 
 	initSubRoutes() {
