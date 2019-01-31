@@ -79,6 +79,10 @@
     padding-top: 20px;
 }
 
+.dp-details .dp-details__description>p {
+    text-transform: none;
+}
+
 
 .dp-details .dp-details__backBtn {
     padding-left: 30px;
@@ -183,7 +187,8 @@
 }
 
 .dp-details .dp-details__color {
-    background-color: burlywood;
+    background-color: #f2eecb;
+    box-shadow: 4px 4px #888;
     margin-top: 30px;
 }
 

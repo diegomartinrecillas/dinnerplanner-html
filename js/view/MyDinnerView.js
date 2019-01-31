@@ -24,7 +24,7 @@ export default class MyDinnerView {
                         </div>
                         <div class="dp-my-dinner__description">
                             <h4>PREPARATION</h4>
-                            <p>${dish.description}></p>
+                            <p>${dish.description}</p>
                         </div>
                     </div>
                 `)).join('')}

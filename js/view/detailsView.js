@@ -24,7 +24,7 @@ export default class DetailsView {
 							<img src="./images/${dish.image}" width="75%" height="75%" />
 						</div>
 						<div class="dp-details__description">
-							<p>${dish.type}<p>
+							<p>${dish.type}</p>
 						</div>
 						<div class="dp-details__backBtn">
 							<a href="#/main"><button id="backToSearchBtn" class="btn dp-btn--primary">Back to Search</button></a>
@@ -104,7 +104,6 @@ export default class DetailsView {
 	}
 
 	renderIngredientsTotal(dish) {
-		console.log('total')
 		this.ingredientsTotal.html(`${this.model.getDishPrice(dish.id).toFixed(2)}`);
 	}
 

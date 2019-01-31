@@ -8,8 +8,6 @@ import Observable from '../utils/Observable.js';
   */
 export default class DinnerModel {
 	constructor() {
-		//TODO Lab 1 implement the data structure that will hold number of guest
-		// and selected dishes for the dinner menu
 		this.totalGuests = new Observable(1);
 		this.selectedDishes = new Observable([]);
 	}
@@ -26,7 +24,7 @@ export default class DinnerModel {
 	//Returns the dish that is on the menu for selected type
 	/** @param {string} type */
 	getSelectedDish(type) {
-		return this.selectedDishes.getValue().find(dish => dish.type === type);
+		return this.getFullMenu().find(dish => dish.type === type);
 	}
 
 	//Returns all the dishes on the menu.
@@ -36,7 +34,7 @@ export default class DinnerModel {
 
 	// is menu
 	isMenuEmpty() {
-		return this.selectedDishes.getValue().length > 0;
+		return this.getFullMenu().length > 0;
 	}
 
 	//Returns all ingredients for all the dishes on the menu.

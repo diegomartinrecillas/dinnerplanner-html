@@ -35,22 +35,24 @@ export default class MainController {
 	}
 
 	initSubRoutes() {
-		const sidebarView = new SidebarView(this.view.sidebarContainer, this.model);
-		const selectView = new SelectView(this.view.contentContainer, this.model);
-		const detailsView = new DetailsView(this.view.contentContainer, this.model);
+		const { model, router, view } = this;
 
-		this.sidebar = AppRouter.withRouter(this.router, new SidebarController(sidebarView, this.model));
-		this.select = AppRouter.withRouter(this.router, new SelectController(selectView, this.model));
-		this.details = AppRouter.withRouter(this.router, new DetailsController(detailsView, this.model));
+		const sidebarView = new SidebarView(view.sidebarContainer, model);
+		const selectView = new SelectView(view.contentContainer, model);
+		const detailsView = new DetailsView(view.contentContainer, model);
+
+		this.sidebar = AppRouter.withRouter(router, new SidebarController(sidebarView, model));
+		this.select = AppRouter.withRouter(router, new SelectController(selectView, model));
+		this.details = AppRouter.withRouter(router, new DetailsController(detailsView, model));
 	}
 
 	loadSubRoutes() {
 		if (this.router.getLastFragment() === 'main') {
 			this.select.renderView();
-			this.select.viewDidRender && this.select.viewDidRender();
+			this.select.viewDidRender();
 		} else {
 			this.details.renderView();
-			this.details.viewDidRender && this.details.viewDidRender();
+			this.details.viewDidRender();
 		}
 	}
 
