@@ -18,11 +18,10 @@
 	.dp-sidebar .dp-sidebar__collapsible {
 		position: absolute;
 		box-shadow: 0 2px #888;
-		background-color: white;
+		background-color: #fafafa;
 		width: 100%;
 		margin-top: 3em;
 		width: 100%;
-		background-color: white;
 	}
 
 	.dp-sidebar
@@ -65,7 +64,7 @@
 
 .dp-sidebar .dp-sidebar__sub-header {
 	align-items: center;
-	background-color: lightgray;
+	background-color: #ddd;
 	border-bottom: 1px solid darkgray;
 	border-left: 1px solid darkgray;
 	border-top: 1px solid darkgray;
@@ -96,7 +95,7 @@
 }
 
 .dp-sidebar .dp-sidebar__dish {
-	background-color: whitesmoke;
+	background-color: white;
 	border: 1px solid darkgray;
 	border-radius: 2px;
 	color: darkred;

@@ -15,49 +15,60 @@ export default class MainController {
 	constructor(view, model) {
 		this.view = view;
 		this.model = model;
-	}
-
-	renderView() {
-		this.view.render();
-	}
-
-	viewDidRender() {
-		this.view.afterRender();
-
 		this.initSubRoutes();
+	}
+
+	onInit() {
+		this.view.render();
+		this.view.afterRender();
+		this.setSubRoutes();
 		this.loadSubRoutes();
 		this.loadSidebar();
 	}
 
-	remove() {
-		this.sidebar.remove();
-		this.details.remove();
+	onDestroy() {
+		this.sidebar.onDestroy();
+		this.details.onDestroy();
+		this.select.onDestroy();
+	}
+
+	onRouteChange() {
+		this.loadSubRoutes();
 	}
 
 	initSubRoutes() {
-		const { model, router, view } = this;
+		const { model } = this;
 
-		const sidebarView = new SidebarView(view.sidebarContainer, model);
-		const selectView = new SelectView(view.contentContainer, model);
-		const detailsView = new DetailsView(view.contentContainer, model);
+		const sidebarView = new SidebarView(null, model);
+		const selectView = new SelectView(null, model);
+		const detailsView = new DetailsView(null, model);
 
-		this.sidebar = AppRouter.withRouter(router, new SidebarController(sidebarView, model));
-		this.select = AppRouter.withRouter(router, new SelectController(selectView, model));
-		this.details = AppRouter.withRouter(router, new DetailsController(detailsView, model));
+		this.sidebar = new SidebarController(sidebarView, model);
+		this.select = new SelectController(selectView, model);
+		this.details = new DetailsController(detailsView, model);
+	}
+
+	setSubRoutes() {
+		const { router } = this;
+
+		AppRouter.withRouter(router, this.details);
+		AppRouter.withRouter(router, this.select);
+		AppRouter.withRouter(router, this.sidebar);
+
+		this.details.view.container = this.view.contentContainer;
+		this.select.view.container = this.view.contentContainer;
+		this.sidebar.view.container = this.view.sidebarContainer;
 	}
 
 	loadSubRoutes() {
 		if (this.router.getLastFragment() === 'main') {
-			this.select.renderView();
-			this.select.viewDidRender();
+			this.select.onInit();
 		} else {
-			this.details.renderView();
-			this.details.viewDidRender();
+			this.details.onInit();
 		}
 	}
 
 	loadSidebar() {
-		this.sidebar.renderView();
-		this.sidebar.viewDidRender();
+		this.sidebar.onInit();
 	}
 }

@@ -6,7 +6,7 @@ export default class HomeController {
 		this.model = model;
 	}
 
-	renderView() {
+	onInit() {
 		return this.view.render();
 	}
 }

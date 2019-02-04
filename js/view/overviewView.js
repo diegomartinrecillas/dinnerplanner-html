@@ -34,12 +34,9 @@ export default class OverviewView {
 	renderItems() {
 		const menu = this.model.getFullMenu();
 
-		this.menuItems.html(menu.map(dish => dish && (/* template */`
-			<div class="dp-overview__dish dp-overview__dish">
-				${new DishView(dish).render()}
-				<div class="dp-overview__dish-price">${this.model.getDishPrice(dish.id)} SEK</div>
-			</div>
-			`))
+		this.menuItems.html(menu.map(dish => (
+				new DishView(dish).render()
+			))
 		);
 	}
 }

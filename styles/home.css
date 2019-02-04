@@ -4,7 +4,6 @@
 	flex-direction: column;
 	justify-content: space-evenly;
 	margin: 0 auto;
-	max-width: 1024px;
 }
 
 .dp-home .dp-home__body {

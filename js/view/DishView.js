@@ -12,7 +12,7 @@ export default class DishView {
 			<div class="dp-dish ${enabled && 'dp-dish_enabled'}">
 				<a class="dp-dish__link" ${enabled && `href="#/main/${dish.id}"`}>
 					<div class="dp-dish__item-img">
-						<img src="${`./images/${dish.image}`}" />
+						<img src="${`${dish.image}`}" />
 					</div>
 					<h3 class="dp-dish__item-title">
 						${dish.name}

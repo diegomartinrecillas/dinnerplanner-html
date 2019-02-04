@@ -6,11 +6,7 @@ export default class MyDinnerController {
 		this.model = model;
 	}
 
-	renderView() {
+	onInit() {
 		this.view.render();
-	}
-
-	viewDidRender() {
-		this.view.afterRender();
 	}
 }

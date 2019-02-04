@@ -1,5 +1,6 @@
 .dp-dish {
 	border-radius: 2px;
+	border: 1px solid #eee;
 	display: flex;
 	flex-direction: column;
 	margin: 20px;
@@ -7,12 +8,18 @@
 	transition: box-shadow 100ms linear;
 }
 
+@media (max-width: 768px) {
+	.dp-dish {
+		width: 100%;
+	}
+}
+
 .dp-dish.dp-dish_enabled {
 	cursor: pointer;
 }
 
 .dp-dish.dp-dish_enabled:hover {
-	box-shadow: 4px 4px #888;
+	box-shadow: 4px 4px #aaa;
 }
 
 .dp-dish .dp-dish__link {
@@ -42,7 +49,7 @@
 .dp-dish .dp-dish__item-img>img {
 	border-top-left-radius: 2px;
 	border-top-right-radius: 2px;
-	height: 140px;
+	height: 200px;
 	width: 100%;
 	object-fit: cover;
 }

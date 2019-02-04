@@ -10,7 +10,7 @@ export default class ReviewView {
 		this.model = model;
 	}
 
-	render(myDinner) {
+	render() {
 		this.container.html(/*template*/ `
 			<div class="dp-overview">
 				<div class="dp-overview__top-bar">
@@ -25,11 +25,11 @@ export default class ReviewView {
 
 				<div id="contentContainer" class="dp-overview__content"></div>
 
-				${!myDinner && /* template */`
-					<div class="dp-overview__print">
-						<a href="#/review/my-dinner"><button class="btn dp-btn--primary dp-overview__print-btn">Print Full Recipe</button></a>
-					</div>
-				` || ''}
+				<div id="printoutBtn" class="dp-overview__print">
+					<a href="#/review/my-dinner">
+						<button class="btn dp-btn--primary dp-overview__print-btn">Print Full Recipe</button>
+					</a>
+				</div>
 			</div>
 		`);
 	}
@@ -37,10 +37,19 @@ export default class ReviewView {
 	afterRender() {
 		this.contentContainer = this.container.find('#contentContainer');
 		this.numberOfGuests = this.container.find('#numberOfGuests');
+		this.printoutBtn = this.container.find('#printoutBtn');
 	}
 
 	renderNumberOfGuests() {
 		const guests = this.model.getNumberOfGuests();
 		this.numberOfGuests.html(`My Dinner: ${guests} ${guests > 1 ? 'people' : 'person'}`);
+	}
+
+	showPrintoutBtn(display) {
+		if (display) {
+			this.printoutBtn.show();
+		} else {
+			this.printoutBtn.hide();
+		}
 	}
 }

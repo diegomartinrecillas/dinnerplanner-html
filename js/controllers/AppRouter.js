@@ -7,31 +7,37 @@ export default class AppRouter {
 	}
 
 	router() {
-		this.forceHash();
+		if (this.forceHash()) {
+			return;
+		}
 		const basePath = this.getBasePath();
 
-		// Get controller or fallback
-		const route = this.routes.find(route => route.path === basePath) || this.routes.find(route => route.path === '*');
-
-		if (this.controller && this.controller.remove) {
-			this.controller.remove();
+		// get controller
+		const route = this.routes.find(route => route.path === basePath);
+		// sub route changed
+		if (this.controller === route.controller) {
+			this.controller.onRouteChange && this.controller.onRouteChange(this);
+			return;
 		}
-		// Abort if the controller is not defined
+		// unload current controller
+		if (this.controller && this.controller.onDestroy) {
+			this.controller.onDestroy();
+		}
+		// load new controller
 		this.controller = route && route.controller;
+		// Abort if the controller is not defined
 		if (!this.controller) {
 			console.error(`No controller defined for route: ${this.url}`);
 			return;
 		}
-		// Checks if there is something on the controller to render
-		if (this.controller.renderView) {
-			// adds a router context to the controller
-			AppRouter.withRouter(this, this.controller);
-			// render the controller
-			this.controller.renderView();
-			// if we have defined a post-render method, call it
-			this.controller.viewDidRender && this.controller.viewDidRender();
+		// adds a router context to the controller
+		AppRouter.withRouter(this, this.controller);
+		// Checks if there is something on the controller to init
+		if (this.controller.onInit) {
+			// init the controller
+			this.controller.onInit();
 		} else {
-			console.error(`The controller at ${this.url} has no renderView method defined`);
+			console.warn(`The controller at ${this.url} has no onInit method defined`);
 		}
 	}
 
@@ -43,9 +49,8 @@ export default class AppRouter {
 	forceHash() {
 		// Force the app to process hash routes only
 		if (location.hash.split('/')[0] !== '#') {
-			// this triggers another hash change, no need to route twice so we abort
 			location.replace('/#/');
-			return;
+			return true;
 		}
 	}
 

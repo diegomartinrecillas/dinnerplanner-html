@@ -42,7 +42,7 @@ export default class SidebarView {
 					<div id="totalPrice" class="dp-sidebar__total"></div>
 
 					<div class="dp-sidebar__confirm">
-						<a href="#/review"><button id="confirmDinnerBtn" class="btn dp-btn--primary w-100">Confirm Dinner</button></a>
+						<button id="confirmDinnerBtn" class="btn dp-btn--primary w-100">Confirm Dinner</button>
 					</div>
 				</div>
 			</div>
@@ -50,6 +50,7 @@ export default class SidebarView {
 	}
 
 	afterRender() {
+		this.confirmDinnerBtn = this.container.find('#confirmDinnerBtn');
 		this.toggleNavbarBtn = this.container.find('#toggleNavbar');
 		this.navbarCollapse = this.container.find('#navbarCollapse');
 		this.guestsInput = this.container.find('#guestsInput');
@@ -63,6 +64,7 @@ export default class SidebarView {
 
 	renderSideMenuItems() {
 		const dishes = this.model.getFullMenu();
+		const guests = this.model.getNumberOfGuests();
 
 		this.dishes.html(/* template */`
 			${dishes.map((dish) => dish && (/* template */`
@@ -71,7 +73,7 @@ export default class SidebarView {
 						${dish.name}
 					</div>
 					<div id="dishPrice" class="dp-sidebar__dish-price">
-						${this.model.getDishPrice(dish.id)} SEK
+						${(dish.pricePerServing * guests).toFixed(2)} SEK
 					</div>
 				</div>
 			`

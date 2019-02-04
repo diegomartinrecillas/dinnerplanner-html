@@ -11,56 +11,59 @@ export default class DetailsView {
 	}
 
 	render(dish) {
-		const guests = this.model.getNumberOfGuests();
-		// this is the dish id
 		this.container.html(/* template */`
-			<div class="dp-details ">
-				<div class="dp-flex dp-flex-sm-col">
-					<div class="dp-flex dp-flex-col dp-flex-i">
+			<div id=loader>loading...</div>
+
+			<div id="dishDetails" class="dp-details ">
+				${dish ? /* template */`
+					<div class="dp-flex dp-flex-sm-col">
+						<div class="dp-flex dp-flex-col dp-flex-i">
+							<div class="dp-details__dishName">
+								<h3>${dish.name}</h3>
+							</div>
+							<div class="dp-details__dishImage">
+								<img src="${dish.image
+								}" width="75%" height="75%" />
+							</div>
+							<div class="dp-details__description">
+								<p class="dp-details__type">${dish.types.map(type => type).join(', ')}</p>
+							</div>
+							<div class="dp-details__backBtn">
+								<a href="#/main"><button id="backToSearchBtn" class="btn dp-btn--primary">Back to Search</button></a>
+							</div>
+						</div>
+						<div class="dp-flex-i dp-details__card">
+							<div class="dp-details__ingredientsTitle">
+
+								<h5 id="numberOfGuests"></h5>
+
+							</div>
+
+							<div id="ingredients" class="dp-details__ingredientsContent"></div>
+
+							<div class="dp-details__tableFooter">
+								<div class="dp-details__addToMenu">
+									<button id="addToMenu" class="btn dp-btn--primary">Add to Menu</button>
+								</div>
+								<div class="dp-details__ingredientsTotalCurr">
+									<p>SEK</p>
+								</div>
+								<div class="dp-details__ingredientsTotal">
+									<p id="ingredientsTotal"></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="dp-flex dp-flex-col">
 						<div class="dp-details__dishName">
-							<h3>${dish.name}</h3>
+							<h3>PREPARATION</h3>
 						</div>
-						<div class="dp-details__dishImage">
-							<img src="./images/${dish.image}" width="75%" height="75%" />
-						</div>
-						<div class="dp-details__description">
-							<p>${dish.type}</p>
-						</div>
-						<div class="dp-details__backBtn">
-							<a href="#/main"><button id="backToSearchBtn" class="btn dp-btn--primary">Back to Search</button></a>
-						</div>
-					</div>
-					<div class="dp-flex-i dp-details__color">
-						<div class="dp-details__ingredientsTitle">
-
-							<h5 id="numberOfGuests"></h5>
-
-						</div>
-
-						<div id="ingredients" class="dp-details__ingredientsContent"></div>
-
-						<div class="dp-details__tableFooter">
-							<div class="dp-details__addToMenu">
-								<button id="addToMenu" class="btn dp-btn--primary">Add to Menu</button>
-							</div>
-							<div class="dp-details__ingredientsTotalCurr">
-								<p>SEK</p>
-							</div>
-							<div class="dp-details__ingredientsTotal">
-								<p id="ingredientsTotal"></p>
-							</div>
+						<div class="dp-details__description pt-0">
+							<p>${this.parseDescription(dish.description)}</p>
 						</div>
 					</div>
 				</div>
-				<div class="dp-flex dp-flex-col">
-					<div class="dp-details__dishName">
-						<h3>PREPARATION</h3>
-					</div>
-					<div class="dp-details__description pt-0">
-						<p>${dish.description}</p>
-					</div>
-				</div>
-			</div>
+			` : ''}
 		`);
 	}
 
@@ -69,6 +72,8 @@ export default class DetailsView {
 		this.ingredientsTotal = this.container.find('#ingredientsTotal');
 		this.numberOfGuests = this.container.find('#numberOfGuests');
 		this.addBtn = this.container.find('#addToMenu');
+		this.loader = this.container.find('#loader');
+		this.dishDetails = this.container.find('#dishDetails');
 	}
 
 	renderIngredients(dish) {
@@ -87,7 +92,7 @@ export default class DetailsView {
 						<p>SEK</p>
 					</div>
 					<div class="dp-details__ingredientsPrice">
-						<p>${(ingredient.price * guests).toFixed(2)}</p>
+						<p>${this.getIngredientPrice(ingredient.price, guests)}</p>
 					</div>
 				</div>
 			`
@@ -104,7 +109,7 @@ export default class DetailsView {
 	}
 
 	renderIngredientsTotal(dish) {
-		this.ingredientsTotal.html(`${this.model.getDishPrice(dish.id).toFixed(2)}`);
+		this.ingredientsTotal.html(`${(dish.pricePerServing * this.model.getNumberOfGuests()).toFixed(2)}`);
 	}
 
 	getIngredientAmount(quantity, guests) {
@@ -115,5 +120,24 @@ export default class DetailsView {
 		}
 
 		return amount;
+	}
+
+	getIngredientPrice(price, guests) {
+		let total = (price * guests).toFixed(2);
+		return total > 0 ? total : '-';
+	}
+
+	parseDescription(description) {
+		return `<div>${description.replace(/\./g, '.</div><div>')}</div>`;
+	}
+
+	showLoader(loading) {
+		if (loading) {
+			this.loader.show();
+			this.dishDetails.hide();
+		} else {
+			this.loader.hide();
+			this.dishDetails.show();
+		}
 	}
 }

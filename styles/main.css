@@ -10,7 +10,7 @@
 }
 
 .dp-main .dp-main__sidebar {
-	background-color: white;
+	background-color: #fafafa;
 	border-right: 1px solid darkgray;
 	flex: 0.2;
 }
@@ -20,6 +20,7 @@
 		border: none;
 		position: fixed;
 		width: 100%;
+		z-index: 1;
 	}
 }
 
@@ -71,6 +72,28 @@
 	.dp-main .dp-main__items {
 		justify-content: center;
 		padding: 0;
+	}
+}
+
+.dp-main .dp-main__search-items {
+	display: flex;
+}
+
+.dp-main .dp-main__search-pagination {
+	display: flex;
+	margin-left: 1em;
+}
+
+@media (max-width: 767px) {
+	.dp-main .dp-main__search-items {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.dp-main .dp-main__search-pagination {
+		display: flex;
+		margin-left: 0;
+		margin-top: 1em;
 	}
 }
 

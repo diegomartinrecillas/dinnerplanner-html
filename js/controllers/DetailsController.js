@@ -6,21 +6,33 @@ export default class DetailsController {
 		this.model = model;
 	}
 
-	renderView() {
-		this.dish = this.model.getDish(this.router.getLastFragment())
+	onInit() {
+		const id = this.router.getLastFragment();
 
-		if (this.dish != null) {
-			this.view.render(this.dish);
-		} else {
-			location = '#/main';
-		}
-	}
-
-	viewDidRender() {
+		this.view.render(this.dish);
 		this.view.afterRender();
-		this.view.addBtn.on('click', this.addMenuItem.bind(this));
-		this.unsubscribe = this.model.totalGuests.subscribe(this.updateView.bind(this));
-		this.updateView();
+
+		this.view.showLoader(true);
+		this.model.getDish(id);
+
+		this.unsubscribeDish = this.model.totalGuests.subscribe(this.updateView.bind(this));
+
+		this.unsubscribeGuests = this.model.dish.subscribe((dish) => {
+			this.dish = dish;
+
+			this.view.render(this.dish);
+			this.view.afterRender();
+
+			this.view.addBtn.on('click', this.addMenuItem.bind(this));
+
+			this.updateView();
+
+			this.view.showLoader(false);
+		}, () => {
+			// TODO: use something nicer than an alert
+			alert('No recipe for this dish found');
+			location = '#/main';
+		});
 	}
 
 	updateView() {
@@ -29,12 +41,13 @@ export default class DetailsController {
 		this.view.renderNumberOfGuests();
 	}
 
-	remove() {
-		this.model.totalGuests.unsubscribe(this.unsubscribe);
+	onDestroy() {
+		this.model.totalGuests.unsubscribe(this.unsubscribeGuests);
+		this.model.dish.unsubscribe(this.unsubscribeDish);
 	}
 
 	addMenuItem() {
-		this.model.addDishToMenu(this.dish.id);
+		this.model.addDishToMenu(this.dish);
 		location = '#/main';
 	}
 }

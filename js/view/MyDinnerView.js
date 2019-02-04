@@ -10,21 +10,21 @@ export default class MyDinnerView {
 		this.model = model;
 	}
 
-	render(selectedDishes) {
+	render() {
 		this.container.html(/*template*/ `
             <div class="dp-my-dinner">
                 ${this.model.getFullMenu().map(dish => (/* template */`
                     <div class="dp-my-dinner__dish">
                         <div class="dp-my-dinner__img-container">
-                            <img src="images/${dish.image}" class="dp-my-dinner__img"/>
+                            <img src="${dish.image}" class="dp-my-dinner__img"/>
                         </div>
                         <div class="dp-my-dinner__details">
                             <h3 class="dp-my-dinner__name">${dish.name}</h3>
-                            <p class="dp-my-dinner__type">${dish.type}</p>
+                            <p class="dp-my-dinner__type">${dish.types.map(type => type).join(', ')}</p>
                         </div>
                         <div class="dp-my-dinner__description">
                             <h4>PREPARATION</h4>
-                            <p>${dish.description}</p>
+                            <p>${this.parseDescription(dish.description)}</p>
                         </div>
                     </div>
                 `)).join('')}
@@ -32,7 +32,7 @@ export default class MyDinnerView {
 		`);
 	}
 
-	afterRender() {
-		// do stuff that require the view to be loaded here
+	parseDescription(description) {
+		return `<div>${description.replace(/\./g, '.</div><div>')}</div>`;
 	}
 }

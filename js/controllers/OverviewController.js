@@ -6,13 +6,9 @@ export default class OverviewController {
 		this.model = model;
 	}
 
-	renderView() {
+	onInit() {
 		this.view.render();
-	}
-
-	viewDidRender() {
 		this.view.afterRender();
-
 		this.view.renderTotal();
 		this.view.renderItems();
 	}
