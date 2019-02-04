@@ -61,6 +61,8 @@ export default class MainController {
 	}
 
 	loadSubRoutes() {
+		this.select.onDestroy();
+		this.details.onDestroy();
 		if (this.router.getLastFragment() === 'main') {
 			this.select.onInit();
 		} else {

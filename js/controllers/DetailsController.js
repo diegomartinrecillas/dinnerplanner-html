@@ -15,9 +15,9 @@ export default class DetailsController {
 		this.view.showLoader(true);
 		this.model.getDish(id);
 
-		this.unsubscribeDish = this.model.totalGuests.subscribe(this.updateView.bind(this));
+		this.unsubscribeGuests = this.model.totalGuests.subscribe(this.updateView.bind(this));
 
-		this.unsubscribeGuests = this.model.dish.subscribe((dish) => {
+		this.unsubscribeDish = this.model.dish.subscribe((dish) => {
 			this.dish = dish;
 
 			this.view.render(this.dish);
