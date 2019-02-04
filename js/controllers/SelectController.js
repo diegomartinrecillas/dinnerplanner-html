@@ -13,9 +13,6 @@ export default class SelectController {
 
 	onInit() {
 		this.view.render();
-		// dishes in the observable cache
-		const dishes = this.model.dishes.getValue();
-
 		this.view.afterRender();
 		this.view.renderTitle();
 
@@ -30,6 +27,9 @@ export default class SelectController {
 		this.view.dishTypeSelect.val(type);
 		this.view.dishSearchInput.val(filter);
 
+		// dishes in the observable cache
+		const dishes = this.model.dishes.getValue();
+
 		if (dishes && dishes.length > 0) {
 			this.view.renderItems(dishes);
 			this.view.showLoader(false);
@@ -40,17 +40,8 @@ export default class SelectController {
 		this.addBtnListeners();
 
 		this.unsubscribe = this.model.dishes.subscribe((dishes) => {
-			if (this.searchParams.offset === 0) {
-				this.view.enableBtn(this.view.dishPrevBtn, false);
-			} else {
-				this.view.enableBtn(this.view.dishPrevBtn, true);
-			}
-
-			if (this.searchParams.offset === 900) {
-				this.view.enableBtn(this.view.dishNextBtn, false);
-			} else {
-				this.view.enableBtn(this.view.dishNextBtn, true);
-			}
+			this.view.enableBtn(this.view.dishPrevBtn, !(this.searchParams.offset === 0));
+			this.view.enableBtn(this.view.dishNextBtn, !(this.searchParams.offset === 900));
 
 			this.view.renderItems(dishes);
 			this.view.showLoader(false);

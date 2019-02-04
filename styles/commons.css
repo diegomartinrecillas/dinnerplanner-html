@@ -9,7 +9,7 @@
 	box-shadow: 2px 2px #888;
 }
 
-.dp-btn--secondary[disabled] {
+.btn[disabled] {
 	box-shadow: none;
 }
 
@@ -107,4 +107,10 @@
 	.dp-sm-only {
 		display: none !important;
 	}
+}
+
+.dp-spinner-grow {
+	width: 1.5rem; 
+	height: 1.5rem;
+	background-color: #ffddc1;
 }

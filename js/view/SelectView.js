@@ -43,7 +43,19 @@ export default class SelectView {
 				</div>
 			</div>
 
-			<div id=loader>loading...</div>
+		
+			<div id="loader" class="dp-flex justify-content-center" style="padding: 100px;">
+				<div class="spinner-grow dp-spinner-grow" role="status">
+					<span class="sr-only">Loading...</span>
+				</div>
+				<div class="spinner-grow dp-spinner-grow" style="background-color: #fac090" role="status">
+					<span class="sr-only">Loading...</span>
+				</div>
+				<div class="spinner-grow dp-spinner-grow" style="background-color: #ffab91;" role="status">
+					<span class="sr-only">Loading...</span>
+				</div>
+			</div>
+	
 
 			<div id="dishesContainer" class="dp-main__items"></div>
 		`);
@@ -82,6 +94,7 @@ export default class SelectView {
 	}
 
 	showLoader(loading) {
+		console.log("showLoader",loading)
 		if (loading) {
 			this.loader.show();
 			this.dishesContainer.hide();

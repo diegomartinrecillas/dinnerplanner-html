@@ -28,9 +28,9 @@ export default class DetailsController {
 			this.updateView();
 
 			this.view.showLoader(false);
-		}, () => {
+		}, (error) => {
 			// TODO: use something nicer than an alert
-			alert('No recipe for this dish found');
+			alert(error);
 			location = '#/main';
 		});
 	}

@@ -12,7 +12,17 @@ export default class DetailsView {
 
 	render(dish) {
 		this.container.html(/* template */`
-			<div id=loader>loading...</div>
+		<div id="loader" class="dp-flex justify-content-center" style="padding: 200px;">
+			<div class="spinner-grow dp-spinner-grow" role="status">
+				<span class="sr-only">Loading...</span>
+			</div>
+			<div class="spinner-grow dp-spinner-grow" style="background-color: #fac090;" role="status">
+				<span class="sr-only">Loading...</span>
+			</div>
+			<div class="spinner-grow dp-spinner-grow" style="background-color: #ffab91;" role="status">
+				<span class="sr-only">Loading...</span>
+			</div>
+		</div>
 
 			<div id="dishDetails" class="dp-details ">
 				${dish ? /* template */`
