@@ -33,6 +33,6 @@ export default class MyDinnerView {
 	}
 
 	parseDescription(description) {
-		return `<div>${description.replace(/\./g, '.</div><div>')}</div>`;
+		return description ? `<div>${description.replace(/\./g, '.</div><div>')}</div>` : '-';
 	}
 }

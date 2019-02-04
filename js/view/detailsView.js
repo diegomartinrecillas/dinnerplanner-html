@@ -128,7 +128,7 @@ export default class DetailsView {
 	}
 
 	parseDescription(description) {
-		return `<div>${description.replace(/\./g, '.</div><div>')}</div>`;
+		return description ? `<div>${description.replace(/\./g, '.</div><div>')}</div>` : '-';
 	}
 
 	showLoader(loading) {
