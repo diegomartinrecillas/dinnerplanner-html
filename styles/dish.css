@@ -34,15 +34,19 @@
 }
 
 .dp-dish .dp-dish__item-title {
+	align-items: center;
 	background-color: whitesmoke;
 	border-bottom-left-radius: 2px;
 	border-bottom-right-radius: 2px;
+	display: flex;
+	justify-content: center;
 	flex: 1;
-	font-size: 16px;
+	font-size: 14px;
 	font-weight: 200;
 	padding: 5px;
 	text-align: center;
 	margin: 0;
+	min-height: 50px;
 	text-transform: capitalize;
 }
 
