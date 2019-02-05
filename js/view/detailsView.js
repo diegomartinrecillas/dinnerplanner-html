@@ -53,7 +53,7 @@ export default class DetailsView {
 
 							<div class="dp-details__tableFooter">
 								<div class="dp-details__addToMenu">
-									<button id="addToMenu" class="btn dp-btn--primary">Add to Menu</button>
+									<button id="addToMenu" class="btn dp-btn--primary"><span class="fas fa-utensils"></span> Add to Menu</button>
 								</div>
 								<div class="dp-details__ingredientsTotalCurr">
 									<p>SEK</p>

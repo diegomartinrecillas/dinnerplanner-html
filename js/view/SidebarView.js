@@ -36,9 +36,9 @@ export default class SidebarView {
 						<p>Dish name</p>
 						<p>Cost</p>
 					</div>
-
+				
 					<div id="sidebarDishContainer"></div>
-
+					
 					<div id="totalPrice" class="dp-sidebar__total"></div>
 
 					<div class="dp-sidebar__confirm">
@@ -66,16 +66,19 @@ export default class SidebarView {
 		const dishes = this.model.getFullMenu();
 		const guests = this.model.getNumberOfGuests();
 
+		
 		this.dishes.html(/* template */`
 			${dishes.map((dish) => dish && (/* template */`
-				<div class="dp-sidebar__dish">
-					<div id="#dishName" class="dp-sidebar__dish-name">
-						${dish.name}
+				<a class="dp-sidebar__link" href="#/main/${dish.id}">
+					<div class="dp-sidebar__dish dp-sidebar__hvr-grow">
+						<div id="#dishName" class="dp-sidebar__dish-name">
+							${dish.name}
+						</div>
+						<div id="dishPrice" class="dp-sidebar__dish-price">
+							${(dish.pricePerServing * guests).toFixed(2)} SEK
+						</div>
 					</div>
-					<div id="dishPrice" class="dp-sidebar__dish-price">
-						${(dish.pricePerServing * guests).toFixed(2)} SEK
-					</div>
-				</div>
+				</a>
 			`
 			)).join('')}
 		`);
