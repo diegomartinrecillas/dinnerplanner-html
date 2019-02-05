@@ -2,12 +2,11 @@
 
 import Observable from '../utils/Observable.js';
 import Http from '../utils/Http.js';
+import { HEADERS } from '../../api.key.js';
 
 const SEARCH_DISHES_URL = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search';
 const RECIPE_BASE_URL = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/';
-const HEADERS = {
-	'X-Mashape-Key': '3d2a031b4cmsh5cd4e7b939ada54p19f679jsn9a775627d767'
-};
+
 
 /**
  * @class

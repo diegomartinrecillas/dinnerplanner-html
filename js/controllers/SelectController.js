@@ -30,13 +30,6 @@ export default class SelectController {
 		this.view.dishTypeSelect.val(type);
 		this.view.dishSearchInput.val(filter);
 
-		if (dishes && dishes.length > 0) {
-			this.view.renderItems(dishes);
-			this.view.showLoader(false);
-		} else {
-			this.search();
-		}
-
 		this.addBtnListeners();
 
 		this.unsubscribe = this.model.dishes.subscribe((dishes) => {
@@ -58,6 +51,13 @@ export default class SelectController {
 			alert(`${error}`);
 			this.view.showLoader(false);
 		});
+
+		if (dishes && dishes.length > 0) {
+			this.view.renderItems(dishes);
+			this.view.showLoader(false);
+		} else {
+			this.search();
+		}
 	}
 
 	onDestroy() {
