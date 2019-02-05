@@ -27,16 +27,6 @@ export default class SelectController {
 		this.view.dishTypeSelect.val(type);
 		this.view.dishSearchInput.val(filter);
 
-		// dishes in the observable cache
-		const dishes = this.model.dishes.getValue();
-
-		if (dishes && dishes.length > 0) {
-			this.view.renderItems(dishes);
-			this.view.showLoader(false);
-		} else {
-			this.search();
-		}
-
 		this.addBtnListeners();
 
 		this.unsubscribe = this.model.dishes.subscribe((dishes) => {
@@ -49,6 +39,16 @@ export default class SelectController {
 			alert(`${error}`);
 			this.view.showLoader(false);
 		});
+
+		// dishes in the observable cache
+		const dishes = this.model.dishes.getValue();
+
+		if (dishes && dishes.length > 0) {
+			this.view.renderItems(dishes);
+			this.view.showLoader(false);
+		} else {
+			this.search();
+		}
 	}
 
 	onDestroy() {
