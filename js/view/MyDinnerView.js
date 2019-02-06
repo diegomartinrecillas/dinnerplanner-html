@@ -16,7 +16,7 @@ export default class MyDinnerView {
                 ${this.model.getFullMenu().map(dish => (/* template */`
                     <div class="dp-my-dinner__dish">
                         <div class="dp-my-dinner__img-container">
-                            <img src="${dish.image}" class="dp-my-dinner__img"/>
+                            <img src="${dish.image}" class="dp-my-dinner__img" onerror="this.src='./images/no-image.png'"/>
                         </div>
                         <div class="dp-my-dinner__details">
                             <h3 class="dp-my-dinner__name">${dish.name}</h3>

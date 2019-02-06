@@ -13,6 +13,7 @@ export default class DetailsController {
 		this.view.afterRender();
 
 		this.view.showLoader(true);
+		this.view.errorMessage.hide();
 		this.model.getDish(id);
 
 		this.unsubscribeGuests = this.model.totalGuests.subscribe(this.updateView.bind(this));
@@ -23,16 +24,21 @@ export default class DetailsController {
 			this.view.render(this.dish);
 			this.view.afterRender();
 
+			this.view.errorMessage.hide();
+
 			this.view.addBtn.on('click', this.addMenuItem.bind(this));
 
 			this.updateView();
 
 			this.view.showLoader(false);
-		}, (error) => {
-			// TODO: use something nicer than an alert
-			this.view.errorMessage.toggleClass('dp-alert-primary_closed');
-			setTimeout(() => this.view.errorMessage.toggleClass('dp-alert-primary_closed'), 3000);
-			setTimeout(() => location='#/main', 3200);
+		}, () => {
+			this.view.showLoader(false);
+			this.view.errorAlert.toggleClass('dp-alert-primary_closed');
+
+			this.view.dishDetails.hide();
+			this.view.errorMessage.show();
+
+			this.timer = setTimeout(() => this.view.errorAlert.toggleClass('dp-alert-primary_closed'), 3000);
 		});
 	}
 
@@ -45,6 +51,7 @@ export default class DetailsController {
 	onDestroy() {
 		this.model.totalGuests.unsubscribe(this.unsubscribeGuests);
 		this.model.dish.unsubscribe(this.unsubscribeDish);
+		clearTimeout(this.timer);
 	}
 
 	addMenuItem() {

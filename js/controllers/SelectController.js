@@ -15,6 +15,7 @@ export default class SelectController {
 		this.view.render();
 		this.view.afterRender();
 		this.view.renderTitle();
+		this.view.errorMessage.hide();
 
 		if (this.searchParams.offset === 0) {
 			this.view.enableBtn(this.view.dishPrevBtn, false);
@@ -35,9 +36,14 @@ export default class SelectController {
 
 			this.view.renderItems(dishes);
 			this.view.showLoader(false);
-		}, (error) => {
-			alert(`${error}`);
+		}, () => {
 			this.view.showLoader(false);
+			this.view.errorAlert.toggleClass('dp-alert-primary_closed');
+
+			this.view.errorMessage.show();
+			this.view.dishesContainer.hide();
+
+			this.timer = setTimeout(() => this.view.errorAlert.toggleClass('dp-alert-primary_closed'), 3000);
 		});
 
 		// dishes in the observable cache
@@ -53,6 +59,7 @@ export default class SelectController {
 
 	onDestroy() {
 		this.model.dishes.unsubscribe(this.unsubscribe);
+		clearTimeout(this.timer);
 	}
 
 	addBtnListeners() {
@@ -79,6 +86,7 @@ export default class SelectController {
 	}
 
 	search() {
+		this.view.errorMessage.hide();
 		const { type, filter, offset } = this.searchParams;
 
 		this.view.enableBtn(this.view.dishPrevBtn, false);

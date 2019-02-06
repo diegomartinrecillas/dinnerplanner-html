@@ -1,6 +1,8 @@
 'use strict';
 import DishView from './DishView.js';
 
+const ERROR_MSG = `Something went wrong, please try again`;
+
 export default class SelectView {
 	/**
 	 * @param {JQuery<HTMLElement>} container
@@ -13,9 +15,9 @@ export default class SelectView {
 
 	render() {
 		this.container.html(/* template */ `
-		<div id="errorMessage" class="alert dp-alert-primary dp-alert-primary_closed" role="alert">
+		<div id="errorAlert" class="alert dp-alert-primary dp-alert-primary_closed" role="alert">
 			 <div class="dp-error-message">
-				 Something went wrong or we don't have this recipe
+				 ${ERROR_MSG}
 			</div>
 		</div>
 			<div class="dp-main__search">
@@ -48,7 +50,7 @@ export default class SelectView {
 				</div>
 			</div>
 
-		
+
 			<div id="loader" class="dp-flex justify-content-center" style="padding: 100px;">
 				<div class="spinner-grow dp-spinner-grow" role="status">
 					<span class="sr-only">Loading...</span>
@@ -60,7 +62,11 @@ export default class SelectView {
 					<span class="sr-only">Loading...</span>
 				</div>
 			</div>
-	
+
+			<div class="dp-error-message dp-error-message_main" id="errorMessage">
+				${ERROR_MSG}
+			</div>
+
 
 			<div id="dishesContainer" class="dp-main__items"></div>
 		`);
@@ -75,6 +81,8 @@ export default class SelectView {
 		this.dishNextBtn = this.container.find('#dishSearchNext');
 		this.loader = this.container.find('#loader');
 		this.title = this.container.find('#mainTitle');
+		this.errorAlert = this.container.find('#errorAlert');
+		this.errorMessage = this.container.find('#errorMessage');
 	}
 
 	renderItems(dishes) {
