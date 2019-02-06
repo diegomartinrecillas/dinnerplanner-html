@@ -11,7 +11,12 @@ export default class DetailsView {
 	}
 
 	render(dish) {
-		this.container.html(/* template */`
+		this.container.html(/* template */`		
+		<div id="errorMessage" class="alert dp-alert-primary dp-alert-primary_closed" role="alert">
+			 <div class="dp-error-message">
+			 	Something went wrong or we don't have this recipe
+			</div>
+		</div>
 		<div id="loader" class="dp-flex justify-content-center" style="padding: 200px;">
 			<div class="spinner-grow dp-spinner-grow" role="status">
 				<span class="sr-only">Loading...</span>
@@ -33,7 +38,7 @@ export default class DetailsView {
 							</div>
 							<div class="dp-details__dishImage">
 								<img src="${dish.image
-								}" width="75%" height="75%" />
+				}" width="75%" height="75%" />
 							</div>
 							<div class="dp-details__description">
 								<p class="dp-details__type">${dish.types.map(type => type).join(', ')}</p>
@@ -84,6 +89,7 @@ export default class DetailsView {
 		this.addBtn = this.container.find('#addToMenu');
 		this.loader = this.container.find('#loader');
 		this.dishDetails = this.container.find('#dishDetails');
+		this.errorMessage = this.container.find('#errorMessage');
 	}
 
 	renderIngredients(dish) {
@@ -106,7 +112,7 @@ export default class DetailsView {
 					</div>
 				</div>
 			`
-			)).join('')}
+		)).join('')}
 		`);
 	}
 
@@ -125,8 +131,8 @@ export default class DetailsView {
 	getIngredientAmount(quantity, guests) {
 		let amount = quantity * guests;
 
-		if(Math.round(amount) !== amount) {
-            amount = amount.toFixed(2);
+		if (Math.round(amount) !== amount) {
+			amount = amount.toFixed(2);
 		}
 
 		return amount;

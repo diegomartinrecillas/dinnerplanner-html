@@ -30,8 +30,9 @@ export default class DetailsController {
 			this.view.showLoader(false);
 		}, (error) => {
 			// TODO: use something nicer than an alert
-			alert(error);
-			location = '#/main';
+			this.view.errorMessage.toggleClass('dp-alert-primary_closed');
+			setTimeout(() => this.view.errorMessage.toggleClass('dp-alert-primary_closed'), 3000);
+			setTimeout(() => location='#/main', 3200);
 		});
 	}
 

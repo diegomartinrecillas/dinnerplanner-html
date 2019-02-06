@@ -13,6 +13,11 @@ export default class SelectView {
 
 	render() {
 		this.container.html(/* template */ `
+		<div id="errorMessage" class="alert dp-alert-primary dp-alert-primary_closed" role="alert">
+			 <div class="dp-error-message">
+				 Something went wrong or we don't have this recipe
+			</div>
+		</div>
 			<div class="dp-main__search">
 				<h1 id="mainTitle" class="dp-main__search-title"></h1>
 				<div class="dp-main__search-items">

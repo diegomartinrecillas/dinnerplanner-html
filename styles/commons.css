@@ -114,3 +114,25 @@
 	height: 1.5rem;
 	background-color: #ffddc1;
 }
+
+.dp-alert-primary {
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: #f44336; 
+	width: 100%;
+	height: 40px;
+	color: white;
+	transition: all 200ms ease;
+	z-index: 1;
+}
+
+.dp-alert-primary.dp-alert-primary_closed {
+	top: -40px;
+	opacity: 0;
+}
+
+.dp-error-message {
+	text-align: center;
+	line-height: 1;
+}
